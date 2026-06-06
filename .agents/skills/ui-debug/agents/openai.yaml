@@ -1,0 +1,7 @@
+interface:
+  display_name: "UI Debug Wordpress"
+  short_description: "Debug UI with State Delta"
+  default_prompt: "Use $ui-debug to diagnose this UI/CSS/JS issue with the State Delta framework. First identify the correct and broken states, list the clues from the symptom, compare environment/time/layer/scope/data deltas, then propose a minimal proof-based fix."
+
+policy:
+  allow_implicit_invocation: true

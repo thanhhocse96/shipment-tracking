@@ -1,0 +1,298 @@
+<html lang="vi"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chuyển Đổi Số Nội Bộ - Tài liệu kỹ thuật</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'] }
+      }
+    }
+  }
+</script>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.left-3\.5{left:0.875rem}.right-2\.5{right:0.625rem}.top-0{top:0px}.top-1\/2{top:50%}.top-\[64px\]{top:64px}.z-20{z-index:20}.z-40{z-index:40}.mx-auto{margin-left:auto;margin-right:auto}.mb-4{margin-bottom:1rem}.mr-2{margin-right:0.5rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-1\.5{margin-top:0.375rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-8{margin-top:2rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-1\.5{height:0.375rem}.h-2\.5{height:0.625rem}.h-4{height:1rem}.h-9{height:2.25rem}.h-\[48px\]{height:48px}.h-\[64px\]{height:64px}.w-1\.5{width:0.375rem}.w-2\.5{width:0.625rem}.w-4{width:1rem}.w-9{width:2.25rem}.w-full{width:100%}.min-w-0{min-width:0px}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-7xl{max-width:80rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1\.5{gap:0.375rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-7{gap:1.75rem}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.divide-y > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse))}.divide-gray-100 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(243 244 246 / var(--tw-divide-opacity, 1))}.divide-gray-200 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(229 231 235 / var(--tw-divide-opacity, 1))}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-b{border-bottom-width:1px}.border-\[\#1e79be\]{--tw-border-opacity:1;border-color:rgb(30 121 190 / var(--tw-border-opacity, 1))}.border-\[\#1e79be\]\/10{border-color:rgb(30 121 190 / 0.1)}.border-\[\#1e79be\]\/15{border-color:rgb(30 121 190 / 0.15)}.border-\[\#1e79be\]\/20{border-color:rgb(30 121 190 / 0.2)}.border-\[\#cbd5e1\]{--tw-border-opacity:1;border-color:rgb(203 213 225 / var(--tw-border-opacity, 1))}.border-\[\#ddfaf4\]{--tw-border-opacity:1;border-color:rgb(221 250 244 / var(--tw-border-opacity, 1))}.border-\[\#e9c766\]{--tw-border-opacity:1;border-color:rgb(233 199 102 / var(--tw-border-opacity, 1))}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.bg-\[\#073b5a\]{--tw-bg-opacity:1;background-color:rgb(7 59 90 / var(--tw-bg-opacity, 1))}.bg-\[\#1e79be\]{--tw-bg-opacity:1;background-color:rgb(30 121 190 / var(--tw-bg-opacity, 1))}.bg-\[\#ddfaf4\]{--tw-bg-opacity:1;background-color:rgb(221 250 244 / var(--tw-bg-opacity, 1))}.bg-\[\#eaf7ff\]{--tw-bg-opacity:1;background-color:rgb(234 247 255 / var(--tw-bg-opacity, 1))}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/90{background-color:rgb(255 255 255 / 0.9)}.p-3\.5{padding:0.875rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-7{padding-left:1.75rem;padding-right:1.75rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-14{padding-top:3.5rem;padding-bottom:3.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pl-10{padding-left:2.5rem}.pr-14{padding-right:3.5rem}.text-left{text-align:left}.text-center{text-align:center}.font-sans{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif}.text-\[11px\]{font-size:11px}.text-\[12px\]{font-size:12px}.text-\[13\.5px\]{font-size:13.5px}.text-\[13px\]{font-size:13px}.text-\[14px\]{font-size:14px}.text-\[15px\]{font-size:15px}.text-\[16px\]{font-size:16px}.text-\[28px\]{font-size:28px}.text-\[32px\]{font-size:32px}.text-xs{font-size:0.75rem;line-height:1rem}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-\[1\.15\]{line-height:1.15}.leading-relaxed{line-height:1.625}.leading-snug{line-height:1.375}.tracking-tight{letter-spacing:-0.025em}.tracking-widest{letter-spacing:0.1em}.text-\[\#073b5a\]{--tw-text-opacity:1;color:rgb(7 59 90 / var(--tw-text-opacity, 1))}.text-\[\#0f5c8c\]{--tw-text-opacity:1;color:rgb(15 92 140 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-white\/70{color:rgb(255 255 255 / 0.7)}.text-white\/80{color:rgb(255 255 255 / 0.8)}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.underline-offset-2{text-underline-offset:2px}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.placeholder-slate-400::placeholder{--tw-placeholder-opacity:1;color:rgb(148 163 184 / var(--tw-placeholder-opacity, 1))}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[\#1e79be\]\/20{--tw-shadow-color:rgb(30 121 190 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-4{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-\[\#1e79be\]\/15{--tw-ring-color:rgb(30 121 190 / 0.15)}.ring-\[\#eaf7ff\]{--tw-ring-opacity:1;--tw-ring-color:rgb(234 247 255 / var(--tw-ring-opacity, 1))}.ring-white\/20{--tw-ring-color:rgb(255 255 255 / 0.2)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:border-\[\#1e79be\]:hover{--tw-border-opacity:1;border-color:rgb(30 121 190 / var(--tw-border-opacity, 1))}.hover\:bg-\[\#0f5c8c\]:hover{--tw-bg-opacity:1;background-color:rgb(15 92 140 / var(--tw-bg-opacity, 1))}.hover\:bg-\[\#eaf7ff\]:hover{--tw-bg-opacity:1;background-color:rgb(234 247 255 / var(--tw-bg-opacity, 1))}.hover\:bg-\[\#eaf7ff\]\/60:hover{background-color:rgb(234 247 255 / 0.6)}.hover\:text-\[\#0f5c8c\]:hover{--tw-text-opacity:1;color:rgb(15 92 140 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.focus\:border-\[\#1e79be\]:focus{--tw-border-opacity:1;border-color:rgb(30 121 190 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-\[\#1e79be\]\/25:focus{--tw-ring-color:rgb(30 121 190 / 0.25)}.active\:bg-\[\#0f5c8c\]:active{--tw-bg-opacity:1;background-color:rgb(15 92 140 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.group:hover .group-hover\:text-\[\#0f5c8c\]{--tw-text-opacity:1;color:rgb(15 92 140 / var(--tw-text-opacity, 1))}@supports ((-webkit-backdrop-filter: var(--tw)) or (backdrop-filter: var(--tw))){.supports-\[backdrop-filter\]\:bg-white\/70{background-color:rgb(255 255 255 / 0.7)}}@media (min-width: 640px){.sm\:inline-flex{display:inline-flex}.sm\:flex-row{flex-direction:row}.sm\:gap-4{gap:1rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}}@media (min-width: 768px){.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:divide-x > :not([hidden]) ~ :not([hidden]){--tw-divide-x-reverse:0;border-right-width:calc(1px * var(--tw-divide-x-reverse));border-left-width:calc(1px * calc(1 - var(--tw-divide-x-reverse)))}.md\:divide-y-0 > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(0px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(0px * var(--tw-divide-y-reverse))}.md\:p-8{padding:2rem}.md\:py-20{padding-top:5rem;padding-bottom:5rem}.md\:text-\[17px\]{font-size:17px}.md\:text-\[44px\]{font-size:44px}}@media (min-width: 1024px){.lg\:col-span-2{grid-column:span 2 / span 2}.lg\:flex{display:flex}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:border-r{border-right-width:1px}.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style></head>
+<body class="bg-white font-sans antialiased text-slate-800">
+  
+  <!-- NAV -->
+  <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[64px]">
+        <div class="flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#073b5a] ring-4 ring-[#eaf7ff]"></span>
+          <span class="text-[16px] font-semibold text-[#073b5a] tracking-tight">Chuyển Đổi Số Nội Bộ</span>
+        </div>
+        <div class="flex items-center gap-3 sm:gap-4">
+          <div class="hidden lg:flex items-center gap-7 mr-2">
+            <a href="#" class="text-[14px] text-slate-600 hover:text-[#0f5c8c] transition">MISA</a>
+            <a href="#" class="text-[14px] text-slate-600 hover:text-[#0f5c8c] transition">Công cụ</a>
+            <a href="#" class="text-[14px] text-slate-600 hover:text-[#0f5c8c] transition">AI &amp; LLM</a>
+            <a href="#" class="text-[14px] text-slate-600 hover:text-[#0f5c8c] transition">Triết lý</a>
+          </div>
+          <button class="text-[13px] px-3.5 py-2 rounded-lg border border-[#1e79be] text-[#0f5c8c] hover:bg-[#eaf7ff] transition font-medium hidden sm:inline-flex">Đăng nhập</button>
+          <button class="text-[13px] px-4 py-2 rounded-lg bg-[#1e79be] text-white border border-[#1e79be] font-medium hover:bg-[#0f5c8c] transition">Mua tài khoản</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO FULL WIDTH -->
+  <section class="relative bg-[#eaf7ff] border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+      <div class="max-w-3xl">
+        <div class="text-[11px] uppercase tracking-widest font-semibold text-[#0f5c8c] mb-4">Tài liệu kỹ thuật nội bộ</div>
+        <h1 class="text-[32px] md:text-[44px] font-semibold leading-[1.15] text-[#073b5a] tracking-tight">Hướng dẫn thực tế cho người dùng MISA và các công cụ chuyển đổi số</h1>
+        <p class="mt-4 text-[16px] md:text-[17px] text-slate-600 max-w-2xl leading-relaxed">Tổng hợp quy trình, template và mẹo sử dụng hàng ngày — viết ngắn gọn, làm được ngay, cập nhật liên tục.</p>
+      </div>
+      
+      <div class="mt-8 flex flex-col sm:flex-row gap-3 max-w-3xl">
+        <div class="relative flex-1">
+          <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input id="searchInput" type="text" placeholder="Tìm hướng dẫn... vd: 'đơn vị tính MISA', 'export PDF'" class="w-full pl-10 pr-14 h-[48px] border border-[#cbd5e1] rounded-xl text-[14px] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1e79be]/25 focus:border-[#1e79be] transition bg-white shadow-sm">
+          <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] bg-[#ddfaf4] text-[#0f5c8c] px-1.5 py-0.5 rounded-md border border-[#1e79be]/10 font-medium">⌘K</span>
+        </div>
+        <button id="searchBtn" class="h-[48px] px-7 bg-[#1e79be] hover:bg-[#0f5c8c] active:bg-[#0f5c8c] text-white text-[14px] font-medium rounded-xl transition shrink-0 shadow-sm shadow-[#1e79be]/20">Tìm</button>
+      </div>
+
+      <div class="flex flex-wrap gap-2.5 mt-5">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#ddfaf4] border border-[#ddfaf4] text-xs text-[#073b5a]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#073b5a]"></span>
+          Dành cho nhân viên
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#ddfaf4] border border-[#ddfaf4] text-xs text-[#073b5a]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#073b5a]"></span>
+          Người dùng MISA
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#ddfaf4] border border-[#ddfaf4] text-xs text-[#073b5a]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#073b5a]"></span>
+          Đối tác bên ngoài
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN FULL WIDTH -->
+  <section class="bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-3">
+        <!-- Left -->
+        <div class="lg:col-span-2 lg:border-r border-gray-200">
+          <div class="px-4 sm:px-6 lg:px-8 py-4 border-b border-gray-100 bg-white/90 sticky top-[64px] z-20 backdrop-blur">
+            <h2 class="text-[11px] font-semibold tracking-widest text-[#0f5c8c]">TÀI LIỆU MỚI NHẤT</h2>
+          </div>
+          
+          <div id="docList" class="divide-y divide-gray-100">
+            <!-- Doc 1 -->
+            <article class="doc-item flex gap-4 px-4 sm:px-6 lg:px-8 py-6 hover:bg-[#eaf7ff]/60 transition cursor-pointer" data-title="Hướng dẫn tạo đơn vị tính mới trên MISA AMIS" data-desc="Các bước tạo gán mã đồng bộ với kho và bán hàng để tránh lỗi xuất hóa đơn">
+              <div class="w-9 h-9 rounded-xl bg-[#eaf7ff] flex items-center justify-center shrink-0 mt-0.5 ring-1 ring-[#1e79be]/15">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#073b5a" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"></path><path d="M14 2v6h6"></path></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[16px] font-medium text-[#073b5a] leading-snug">Hướng dẫn tạo đơn vị tính mới trên MISA AMIS</h3>
+                <p class="text-[14px] text-slate-600 mt-1.5 leading-relaxed">Các bước tạo, gán mã, đồng bộ với kho và bán hàng để tránh lỗi xuất hóa đơn.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2.5 py-1 rounded-md text-[11px] font-medium bg-white text-[#073b5a] border border-[#e9c766]">Miễn phí</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">MISA</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">Kho</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Doc 2 -->
+            <article class="doc-item flex gap-4 px-4 sm:px-6 lg:px-8 py-6 hover:bg-[#eaf7ff]/60 transition cursor-pointer" data-title="Export báo cáo PDF không bị lỗi font tiếng Việt" data-desc="Cấu hình font margin và template để in chứng từ chuẩn">
+              <div class="w-9 h-9 rounded-xl bg-[#ddfaf4] flex items-center justify-center shrink-0 mt-0.5 ring-1 ring-[#1e79be]/15">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#073b5a" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"></path><path d="M12 18v-6"></path><path d="M9 15l3 3 3-3"></path></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[16px] font-medium text-[#073b5a] leading-snug">Export báo cáo PDF không bị lỗi font tiếng Việt</h3>
+                <p class="text-[14px] text-slate-600 mt-1.5 leading-relaxed">Cấu hình font, margin và template để in chứng từ chuẩn.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2.5 py-1 rounded-md text-[11px] font-medium bg-white text-[#073b5a] border border-[#e9c766]">Miễn phí</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">Công cụ</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">PDF</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Doc 3 -->
+            <article class="doc-item flex gap-4 px-4 sm:px-6 lg:px-8 py-6 hover:bg-[#eaf7ff]/60 transition cursor-pointer" data-title="Prompt mẫu viết email chăm sóc khách hàng bằng AI" data-desc="Bộ prompt đã test dùng cho GPT Claude để trả lời nhanh và đúng giọng điệu công ty">
+              <div class="w-9 h-9 rounded-xl bg-[#eaf7ff] flex items-center justify-center shrink-0 mt-0.5 ring-1 ring-[#1e79be]/15">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#073b5a" stroke-width="2"><path d="M12 3l1.9 5.8h6.1l-4.9 3.6 1.9 5.8-4.9-3.6-4.9 3.6 1.9-5.8-4.9-3.6h6.1z"></path></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[16px] font-medium text-[#073b5a] leading-snug">Prompt mẫu viết email chăm sóc khách hàng bằng AI</h3>
+                <p class="text-[14px] text-slate-600 mt-1.5 leading-relaxed">Bộ prompt đã test, dùng cho GPT/Claude để trả lời nhanh và đúng giọng điệu công ty.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2.5 py-1 rounded-md text-[11px] font-medium bg-[#eaf7ff] text-[#0f5c8c] border border-[#1e79be]/15">Nội bộ</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">AI &amp; LLM</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">CSKH</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Doc 4 -->
+            <article class="doc-item flex gap-4 px-4 sm:px-6 lg:px-8 py-6 hover:bg-[#eaf7ff]/60 transition cursor-pointer" data-title="Xử lý chênh lệch tồn kho giữa MISA và thực tế" data-desc="Checklist kiểm tra cách đối chiếu và bút toán điều chỉnh">
+              <div class="w-9 h-9 rounded-xl bg-[#eaf7ff] flex items-center justify-center shrink-0 mt-0.5 ring-1 ring-[#1e79be]/15">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#073b5a" stroke-width="2"><path d="M3 6h18M7 6v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V6"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[16px] font-medium text-[#073b5a] leading-snug">Xử lý chênh lệch tồn kho giữa MISA và thực tế</h3>
+                <p class="text-[14px] text-slate-600 mt-1.5 leading-relaxed">Checklist kiểm tra, cách đối chiếu và bút toán điều chỉnh.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200">Đã khóa</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">MISA</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">Kiểm kê</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Doc 5 -->
+            <article class="doc-item flex gap-4 px-4 sm:px-6 lg:px-8 py-6 hover:bg-[#eaf7ff]/60 transition cursor-pointer" data-title="Tự động hóa báo cáo tuần bằng Google Sheets + Apps Script" data-desc="Kết nối dữ liệu gửi email tự động mỗi sáng thứ 2">
+              <div class="w-9 h-9 rounded-xl bg-[#ddfaf4] flex items-center justify-center shrink-0 mt-0.5 ring-1 ring-[#1e79be]/15">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#073b5a" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[16px] font-medium text-[#073b5a] leading-snug">Tự động hóa báo cáo tuần bằng Google Sheets + Apps Script</h3>
+                <p class="text-[14px] text-slate-600 mt-1.5 leading-relaxed">Kết nối dữ liệu, gửi email tự động mỗi sáng thứ 2.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2.5 py-1 rounded-md text-[11px] font-medium bg-[#eaf7ff] text-[#0f5c8c] border border-[#1e79be]/15">Nội bộ</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">Công cụ</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">Automation</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Doc 6 -->
+            <article class="doc-item flex gap-4 px-4 sm:px-6 lg:px-8 py-6 hover:bg-[#eaf7ff]/60 transition cursor-pointer" data-title="Tích hợp AI vào quy trình duyệt nội dung" data-desc="Workflow review checklist an toàn dữ liệu ví dụ thực tế">
+              <div class="w-9 h-9 rounded-xl bg-[#eaf7ff] flex items-center justify-center shrink-0 mt-0.5 ring-1 ring-[#1e79be]/15">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#073b5a" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 0 0 0-1.82-.33 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 0 0 0 .33-1.82 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 0 0 0 1 1.51 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[16px] font-medium text-[#073b5a] leading-snug">Tích hợp AI vào quy trình duyệt nội dung</h3>
+                <p class="text-[14px] text-slate-600 mt-1.5 leading-relaxed">Workflow review, checklist an toàn dữ liệu, ví dụ thực tế.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-100 text-slate-600 border border-slate-200">Đã khóa</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">AI &amp; LLM</span>
+                  <span class="px-2.5 py-1 rounded-md text-[11px] bg-gray-100 text-gray-700">Quy trình</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="px-4 sm:px-6 lg:px-8 py-8 bg-white">
+          <h2 class="text-[11px] font-semibold tracking-widest text-[#0f5c8c] mb-4">DANH MỤC</h2>
+          <div class="space-y-2.5">
+            <button class="w-full flex items-center justify-between p-3.5 rounded-xl border border-gray-200 hover:border-[#1e79be] hover:bg-[#eaf7ff] transition group text-left">
+              <span class="text-[14px] text-slate-700 group-hover:text-[#0f5c8c] font-medium">MISA AMIS</span>
+              <span class="text-xs text-slate-500 bg-gray-100 group-hover:bg-white px-2.5 py-1 rounded-full font-medium">89</span>
+            </button>
+            <button class="w-full flex items-center justify-between p-3.5 rounded-xl border border-gray-200 hover:border-[#1e79be] hover:bg-[#eaf7ff] transition group text-left">
+              <span class="text-[14px] text-slate-700 group-hover:text-[#0f5c8c] font-medium">Công cụ văn phòng</span>
+              <span class="text-xs text-slate-500 bg-gray-100 group-hover:bg-white px-2.5 py-1 rounded-full font-medium">156</span>
+            </button>
+            <button class="w-full flex items-center justify-between p-3.5 rounded-xl border border-gray-200 hover:border-[#1e79be] hover:bg-[#eaf7ff] transition group text-left">
+              <span class="text-[14px] text-slate-700 group-hover:text-[#0f5c8c] font-medium">AI &amp; LLM</span>
+              <span class="text-xs text-slate-500 bg-gray-100 group-hover:bg-white px-2.5 py-1 rounded-full font-medium">47</span>
+            </button>
+            <button class="w-full flex items-center justify-between p-3.5 rounded-xl border border-gray-200 hover:border-[#1e79be] hover:bg-[#eaf7ff] transition group text-left">
+              <span class="text-[14px] text-slate-700 group-hover:text-[#0f5c8c] font-medium">Quy trình nội bộ</span>
+              <span class="text-xs text-slate-500 bg-gray-100 group-hover:bg-white px-2.5 py-1 rounded-full font-medium">234</span>
+            </button>
+            <button class="w-full flex items-center justify-between p-3.5 rounded-xl border border-gray-200 hover:border-[#1e79be] hover:bg-[#eaf7ff] transition group text-left">
+              <span class="text-[14px] text-slate-700 group-hover:text-[#0f5c8c] font-medium">Tài chính - Kế toán</span>
+              <span class="text-xs text-slate-500 bg-gray-100 group-hover:bg-white px-2.5 py-1 rounded-full font-medium">112</span>
+            </button>
+          </div>
+
+          <div class="mt-8 p-5 rounded-2xl bg-[#ddfaf4] border border-[#1e79be]/20 shadow-sm">
+            <h3 class="text-[15px] font-semibold text-[#073b5a]">Truy cập đầy đủ</h3>
+            <p class="text-[13.5px] text-slate-600 mt-2 leading-relaxed">Đăng nhập bằng email công ty để xem tài liệu nội bộ và tải file đính kèm.</p>
+            <button class="w-full mt-4 py-2.5 bg-[#1e79be] hover:bg-[#0f5c8c] text-white text-[14px] font-medium rounded-xl transition shadow-sm shadow-[#1e79be]/20">Đăng nhập bằng email công ty</button>
+            <p class="text-center mt-3">
+              <a href="#" class="text-[12px] text-slate-500 hover:text-[#0f5c8c] underline underline-offset-2">Đã có tài khoản? Đăng nhập</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS FULL WIDTH -->
+  <section class="bg-[#eaf7ff] border-y border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+        <div class="p-6 md:p-8 text-center">
+          <div class="text-[28px] font-semibold text-[#073b5a] tracking-tight">1,247</div>
+          <div class="text-[13px] text-slate-500 mt-1">Tài liệu</div>
+        </div>
+        <div class="p-6 md:p-8 text-center">
+          <div class="text-[28px] font-semibold text-[#073b5a] tracking-tight">89</div>
+          <div class="text-[13px] text-slate-500 mt-1">Hướng dẫn MISA</div>
+        </div>
+        <div class="p-6 md:p-8 text-center">
+          <div class="text-[28px] font-semibold text-[#073b5a] tracking-tight">342</div>
+          <div class="text-[13px] text-slate-500 mt-1">Nhân viên</div>
+        </div>
+        <div class="p-6 md:p-8 text-center">
+          <div class="text-[28px] font-semibold text-[#073b5a] tracking-tight">24/7</div>
+          <div class="text-[13px] text-slate-500 mt-1">Cập nhật</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER NAVY -->
+  <footer class="bg-[#073b5a]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-white ring-4 ring-white/20"></span>
+          <span class="text-white font-semibold tracking-tight">Chuyển Đổi Số Nội Bộ</span>
+        </div>
+        <div class="text-[13px] text-white/70">© 2025 Chuyển Đổi Số Nội Bộ • Phiên bản nội bộ</div>
+        <div class="flex items-center gap-6 text-[13px]">
+          <a href="#" class="text-white/80 hover:text-white transition">Điều khoản</a>
+          <a href="#" class="text-white/80 hover:text-white transition">Bảo mật</a>
+          <a href="#" class="text-white/80 hover:text-white transition">Hỗ trợ</a>
+          <a href="#" class="text-white/80 hover:text-white transition">Liên hệ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+  const items = document.querySelectorAll('.doc-item');
+  
+  function filterDocs() {
+    const q = searchInput.value.toLowerCase().trim();
+    items.forEach(el => {
+      const title = el.dataset.title.toLowerCase();
+      const desc = el.dataset.desc.toLowerCase();
+      const match = title.includes(q) || desc.includes(q);
+      el.style.display = match ? '' : 'none';
+    });
+  }
+  
+  searchInput.addEventListener('input', filterDocs);
+  searchBtn.addEventListener('click', filterDocs);
+  
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+    }
+  });
+</script>
+<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
+<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;var a=target.closest?target.closest("a[href]"):null;if(!a||!a.href||!/^https?:\/\//.test(a.href))return;if(a.href.replace(/#.*$/,"")===loc)return;var productId=extractProductId(target)||extractProductId(a);if(!productId)return;e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*")},true)})();</script>
+</body></html>

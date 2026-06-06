@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seven Agency – Smart Digital Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    @keyframes tada {
+      from { transform: scale3d(1,1,1); }
+      10%,20% { transform: scale3d(.9,.9,.9) rotate3d(0,0,1,-3deg); }
+      30%,50%,70%,90% { transform: scale3d(1.1,1.1) rotate3d(0,0,1,3deg); }
+      40%,60%,80% { transform: scale3d(1.1,1.1) rotate3d(0,0,1,-3deg); }
+      to { transform: scale3d(1,1,1); }
+    }
+  </style>
+</head>
+<body class="antialiased bg-slate-950">
+  <!-- Sticky Header -->
+  <header id="sticky-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+    <div class="container mx-auto flex items-center justify-between px-6 py-4">
+      <!-- Left: Logo -->
+      <a href="#!/up" class="flex-shrink-0">
+        <img id="header-logo" src="https://the7.io/elementor-agency/wp-content/uploads/sites/75/2020/09/logo-ag-01.svg" alt="Seven Agency" class="w-10 h-10 transition-all duration-300 brightness-0 invert">
+      </a>
+
+      <!-- Center: Menu -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#!/up" class="nav-link text-white/90 hover:text-white transition-colors">Home</a>
+        <a href="#!/about" class="nav-link text-white/90 hover:text-white transition-colors">About</a>
+        <a href="#!/services" class="nav-link text-white/90 hover:text-white transition-colors">Services</a>
+        <a href="#!/portfolio" class="nav-link text-white/90 hover:text-white transition-colors">Portfolio</a>
+        <a href="#!/pricing" class="nav-link text-white/90 hover:text-white transition-colors">Pricing</a>
+        <a href="#!/how-we-work" class="nav-link text-white/90 hover:text-white transition-colors">How we work</a>
+      </nav>
+
+      <!-- Right: Contact -->
+      <div class="flex items-center gap-3">
+        <a href="/contact" id="contact-link" class="hidden sm:flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 0 0 1-.9 3.8 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>Contact us</span>
+        </a>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-button" class="md:hidden p-2 -mr-2 text-white/90 hover:text-white transition-colors" aria-label="Toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden absolute top-full left-0 right-0 bg-white border-t border-slate-200 shadow-xl hidden">
+      <nav class="container mx-auto px-6 py-4 flex flex-col gap-1 text-[15px] font-medium">
+        <a href="#!/up" class="py-2.5 text-slate-700 hover:text-black">Home</a>
+        <a href="#!/about" class="py-2.5 text-slate-700 hover:text-black">About</a>
+        <a href="#!/services" class="py-2.5 text-slate-700 hover:text-black">Services</a>
+        <a href="#!/portfolio" class="py-2.5 text-slate-700 hover:text-black">Portfolio</a>
+        <a href="#!/pricing" class="py-2.5 text-slate-700 hover:text-black">Pricing</a>
+        <a href="#!/how-we-work" class="py-2.5 text-slate-700 hover:text-black">How we work</a>
+        <a href="/contact" class="py-2.5 mt-2 flex items-center gap-2 text-slate-900 font-semibold border-t border-slate-200 pt-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 0 0 1-.9 3.8 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          Contact us
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0f172a] to-[#1e293b]">
+    <div id="hero-motion" class="absolute inset-0 bg-cover bg-center will-change-transform" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072'); transform: scale(1.2); opacity:0.5"></div>
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 text-center text-white px-4">
+      <a href="#!/up">
+        <img src="https://the7.io/elementor-agency/wp-content/uploads/sites/75/2020/09/logo-ag-01.svg" alt="Seven Agency Logo" class="w-24 h-24 mx-auto animate-[tada_1s_ease] brightness-0 invert drop-shadow-2xl">
+      </a>
+      <div class="h-8"></div>
+      <h2 class="text-lg tracking-widest uppercase opacity-80">Seven Agency</h2>
+      <div class="h-4"></div>
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight max-w-4xl mx-auto leading-[1.1]">Smart digital solutions</h1>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+      <div class="w-[28px] h-[44px] rounded-full border-2 border-white/30 flex justify-center pt-2">
+        <div class="w-1 h-2 bg-white/70 rounded-full animate-bounce"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Content to enable scroll -->
+  <main class="bg-white">
+    <section class="container mx-auto px-6 py-24 md:py-32">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-widest text-slate-500 font-medium mb-4">Next Section</p>
+        <h3 class="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight">Scroll to see the sticky header and motion effect</h3>
+        <p class="mt-6 text-lg text-slate-600 leading-relaxed">The hero background scales from 1.2 to 1.0 and opacity animates from 0.5 to 1.0 as you scroll. The header transitions from transparent to solid white.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Hero motion effects
+    const heroMotion = document.getElementById('hero-motion');
+    function updateHero() {
+      const scrollY = window.scrollY;
+      const progress = Math.min(scrollY / window.innerHeight, 1);
+      const scale = 1.2 - (progress * 0.2);
+      const opacity = 0.5 + (progress * 0.5);
+      heroMotion.style.transform = `scale(${scale})`;
+      heroMotion.style.opacity = opacity;
+    }
+    window.addEventListener('scroll', updateHero, { passive: true });
+    updateHero();
+
+    // Sticky header
+    const header = document.getElementById('sticky-header');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const contactLink = document.getElementById('contact-link');
+    const headerLogo = document.getElementById('header-logo');
+    const mobileBtn = document.getElementById('mobile-menu-button');
+
+    function updateHeader() {
+      const scrolled = window.scrollY > 20;
+      
+      if (scrolled) {
+        header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+        header.classList.remove('bg-transparent');
+        headerLogo.classList.remove('brightness-0', 'invert');
+        
+        navLinks.forEach(link => {
+          link.classList.remove('text-white/90', 'hover:text-white');
+          link.classList.add('text-slate-700', 'hover:text-slate-900');
+        });
+        
+        if (contactLink) {
+          contactLink.classList.remove('text-white/90', 'hover:text-white');
+          contactLink.classList.add('text-slate-700', 'hover:text-slate-900');
+        }
+        
+        mobileBtn.classList.remove('text-white/90', 'hover:text-white');
+        mobileBtn.classList.add('text-slate-700', 'hover:text-slate-900');
+      } else {
+        header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+        header.classList.add('bg-transparent');
+        headerLogo.classList.add('brightness-0', 'invert');
+        
+        navLinks.forEach(link => {
+          link.classList.add('text-white/90', 'hover:text-white');
+          link.classList.remove('text-slate-700', 'hover:text-slate-900');
+        });
+        
+        if (contactLink) {
+          contactLink.classList.add('text-white/90', 'hover:text-white');
+          contactLink.classList.remove('text-slate-700', 'hover:text-slate-900');
+        }
+        
+        mobileBtn.classList.add('text-white/90', 'hover:text-white');
+        mobileBtn.classList.remove('text-slate-700', 'hover:text-slate-900');
+      }
+    }
+
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
+
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

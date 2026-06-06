@@ -1,0 +1,7 @@
+interface:
+  display_name: "HTML-2-Gutenberg"
+  short_description: "Convert HTML artifacts to Gutenberg safely."
+  default_prompt: "Use $html-2-gutenberg to translate this HTML/CSS artifact into paste-safe SKVN Gutenberg markup."
+
+policy:
+  allow_implicit_invocation: true

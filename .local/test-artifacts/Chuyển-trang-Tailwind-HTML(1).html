@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Agency — Smart digital solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="antialiased bg-white text-gray-900">
+    <!-- Header -->
+    <header id="header" class="absolute top-0 left-0 w-full z-50 transition-all duration-500 bg-transparent text-white">
+        <div class="max-w-[1320px] mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-[90px]">
+                <a href="#" class="text-[26px] font-semibold tracking-tight">Seven<span class="opacity-60">.</span></a>
+                
+                <nav class="hidden md:flex items-center space-x-9 text-[15px] font-medium">
+                    <a href="#" class="hover:opacity-70 transition-opacity">Home</a>
+                    <a href="#about" class="hover:opacity-70 transition-opacity">About</a>
+                    <a href="#" class="hover:opacity-70 transition-opacity">Services</a>
+                    <a href="#" class="hover:opacity-70 transition-opacity">Projects</a>
+                    <a href="#" class="hover:opacity-70 transition-opacity">Contact</a>
+                </nav>
+
+                <button id="menu-btn" class="md:hidden p-2 -mr-2" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 w-full bg-white text-gray-900 shadow-xl border-t border-gray-100">
+            <nav class="flex flex-col px-6 py-4 space-y-1 text-[15px] font-medium">
+                <a href="#" class="py-3 hover:text-black transition">Home</a>
+                <a href="#about" class="py-3 hover:text-black transition">About</a>
+                <a href="#" class="py-3 hover:text-black transition">Services</a>
+                <a href="#" class="py-3 hover:text-black transition">Projects</a>
+                <a href="#" class="py-3 hover:text-black transition">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Workspace background" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-[#0a0e14]/60"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto pt-20">
+            <p class="uppercase tracking-[0.35em] text-[12px] md:text-[13px] text-white/70 mb-6 font-medium">Seven Agency</p>
+            <h1 class="text-white font-bold leading-[1.05] tracking-tight text-[44px] sm:text-[60px] md:text-[78px] lg:text-[88px]">
+                Smart digital<br class="hidden sm:block"> solutions
+            </h1>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
+                <a href="#" class="w-full sm:w-auto inline-flex items-center justify-center bg-white text-gray-900 px-8 h-[52px] rounded-full font-medium text-[15px] hover:bg-gray-100 transition-all duration-300 shadow-sm hover:shadow-md">
+                    Our works
+                </a>
+                <a href="#" class="w-full sm:w-auto inline-flex items-center justify-center border border-white/70 text-white px-8 h-[52px] rounded-full font-medium text-[15px] hover:bg-white hover:text-gray-900 hover:border-white transition-all duration-300 backdrop-blur-sm">
+                    Contact us
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+            <a href="#about" class="flex flex-col items-center text-white/60 hover:text-white transition-colors group">
+                <div class="w-[24px] h-[40px] rounded-full border border-white/25 flex justify-center pt-2 group-hover:border-white/50 transition-colors">
+                    <div class="w-[3px] h-[7px] bg-white/60 rounded-full animate-bounce group-hover:bg-white transition-colors"></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Who we are -->
+    <section id="about" class="bg-white py-24 lg:py-32">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                <!-- Left -->
+                <div>
+                    <span class="text-[13px] uppercase tracking-[0.2em] text-gray-500 font-medium">Who we are</span>
+                    <h2 class="mt-5 text-[32px] md:text-[40px] lg:text-[44px] font-semibold leading-[1.2] tracking-tight text-gray-900">
+                        Experienced UX and Web designers, crafting innovative digital solutions for clients worldwide
+                    </h2>
+                    <h3 class="mt-8 text-[19px] md:text-[20px] leading-snug text-gray-800 font-medium">
+                        A team of specialists, passionate about new technologies & progress
+                    </h3>
+                    
+                    <div class="mt-6 space-y-5 text-[16px] leading-relaxed text-gray-600">
+                        <p>We are a group of passionate designers and developers who thrive on taking on new challenges and always aim to deliver only the best to our clients. Our love to the craft and professional attitude define the end product. An incredible level of attention to details.</p>
+                        <p>We help transform many ideas into strong authentic brands.</p>
+                    </div>
+                </div>
+
+                <!-- Right - Stats -->
+                <div id="stats" class="lg:pl-16 lg:border-l lg:border-gray-200">
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-14 sm:gap-y-16">
+                        <div>
+                            <div class="text-[56px] sm:text-[68px] font-[300] leading-none tracking-tight text-gray-900">
+                                <span class="counter" data-target="200">0</span><span class="text-gray-300 font-light">+</span>
+                            </div>
+                            <p class="mt-4 text-[15px] text-gray-600">Projects completed</p>
+                        </div>
+                        <div>
+                            <div class="text-[56px] sm:text-[68px] font-[300] leading-none tracking-tight text-gray-900">
+                                <span class="counter" data-target="25">0</span>
+                            </div>
+                            <p class="mt-4 text-[15px] text-gray-600">Team members</p>
+                        </div>
+                        <div>
+                            <div class="text-[56px] sm:text-[68px] font-[300] leading-none tracking-tight text-gray-900">
+                                <span class="counter" data-target="20">0</span><span class="text-gray-300 font-light">+</span>
+                            </div>
+                            <p class="mt-4 text-[15px] text-gray-600">Years experience</p>
+                        </div>
+                        <div>
+                            <div class="text-[56px] sm:text-[68px] font-[300] leading-none tracking-tight text-gray-900">
+                                <span class="counter" data-target="150">0</span>
+                            </div>
+                            <p class="mt-4 text-[15px] text-gray-600">Happy clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Header scroll behavior
+        const header = document.getElementById('header');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.remove('absolute', 'bg-transparent', 'text-white');
+                header.classList.add('fixed', 'bg-white', 'text-gray-900', 'shadow-sm', 'backdrop-blur-md', 'bg-white/95');
+            } else {
+                header.classList.remove('fixed', 'bg-white', 'text-gray-900', 'shadow-sm', 'backdrop-blur-md', 'bg-white/95');
+                header.classList.add('absolute', 'bg-transparent', 'text-white');
+            }
+        });
+
+        // Mobile menu toggle
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        let started = false;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.dataset.target;
+                const duration = 1800;
+                const startTime = performance.now();
+
+                const update = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    const value = Math.floor(easeOut * target);
+                    
+                    counter.textContent = value;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                requestAnimationFrame(update);
+            });
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !started) {
+                    started = true;
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.4 });
+
+        const statsSection = document.getElementById('stats');
+        if (statsSection) observer.observe(statsSection);
+    </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The7 Modern Business Hero — Tailwind Slider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+    /* Slider core */
+    .slide { transition: opacity 1200ms cubic-bezier(0.4,0,0.2,1); }
+    .content-slide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .content-slide.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    /* Layer animations */
+    .anim {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .content-slide.active .anim {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .anim-1 { transition: opacity 0.8s cubic-bezier(.21,.61,.35,1) 0ms, transform 0.8s cubic-bezier(.21,.61,.35,1) 0ms; }
+    .anim-2 { transition: opacity 0.8s cubic-bezier(.21,.61,.35,1) 150ms, transform 0.8s cubic-bezier(.21,.61,.35,1) 150ms; }
+    .anim-3 { transition: opacity 0.8s cubic-bezier(.21,.61,.35,1) 300ms, transform 0.8s cubic-bezier(.21,.61,.35,1) 300ms; }
+    .anim-4 { transition: opacity 0.8s cubic-bezier(.21,.61,.35,1) 450ms, transform 0.8s cubic-bezier(.21,.61,.35,1) 450ms; }
+  </style>
+</head>
+<body class="bg-black">
+  <!-- Hero Slider -->
+  <section id="hero-slider" class="relative h-screen min-h-[640px] overflow-hidden bg-slate-950 select-none" style="--mx:0; --my:0">
+    
+    <!-- Slides -->
+    <div class="absolute inset-0" id="slides-container">
+      <!-- Slide 1 -->
+      <div class="slide absolute inset-0 opacity-100 z-[1]" data-index="0">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2940&auto=format&fit=crop" alt="Team collaborating on digital solutions" class="absolute inset-0 w-full h-full object-cover" loading="eager" fetchpriority="high">
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide absolute inset-0 opacity-0 z-0" data-index="1">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2940&auto=format&fit=crop" alt="Business strategy meeting" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Dark gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/70 to-slate-950/40 z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-slate-950/30 z-10"></div>
+
+    <!-- Parallax Blobs -->
+    <div id="parallax-blobs" class="absolute inset-0 z-[5] pointer-events-none overflow-hidden">
+      <div class="absolute -top-32 -left-32 w-[420px] h-[420px] md:w-[560px] md:h-[560px] rounded-full bg-violet-600/30 blur-[120px] will-change-transform" style="transform: translate3d(calc(var(--mx) * -35px), calc(var(--my) * -25px), 0)"></div>
+      <div class="absolute top-[20%] -right-40 w-[380px] h-[380px] md:w-[520px] md:h-[520px] rounded-full bg-teal-400/25 blur-[110px] will-change-transform" style="transform: translate3d(calc(var(--mx) * 30px), calc(var(--my) * -20px), 0)"></div>
+      <div class="absolute -bottom-32 left-[15%] w-[440px] h-[440px] md:w-[600px] md:h-[600px] rounded-full bg-blue-600/25 blur-[130px] will-change-transform" style="transform: translate3d(calc(var(--mx) * -20px), calc(var(--my) * 30px), 0)"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-20 h-full flex items-center">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        
+        <!-- Slide 1 Content -->
+        <div class="content-slide active" data-index="0">
+          <div class="max-w-[880px]">
+            <p class="anim anim-1 inline-flex items-center gap-2 text-[11px] md:text-xs font-semibold tracking-[0.2em] uppercase text-white/70 mb-6">
+              <span class="w-8 h-[2px] bg-white/60"></span>
+              MODERN BUSINESS
+            </p>
+            <h1 class="anim anim-2 text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.05] mb-6">
+              We craft <span class="text-white/60">innovative</span> digital solutions
+            </h1>
+            <p class="anim anim-3 text-base md:text-lg lg:text-xl text-slate-200/80 leading-relaxed max-w-2xl mb-10">
+              Award-winning team crafting high-end digital experiences for brands worldwide.
+            </p>
+            <div class="anim anim-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <a href="#" class="group inline-flex items-center justify-center px-7 py-3.5 bg-white text-slate-900 font-semibold rounded-full shadow-lg shadow-black/20 hover:bg-slate-100 transition-all duration-300">
+                Our Services
+                <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#" class="inline-flex items-center justify-center px-7 py-3.5 font-semibold text-white rounded-full border border-white/30 hover:border-white/60 hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                Get in Touch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 Content -->
+        <div class="content-slide" data-index="1">
+          <div class="max-w-[880px]">
+            <p class="anim anim-1 inline-flex items-center gap-2 text-[11px] md:text-xs font-semibold tracking-[0.2em] uppercase text-white/70 mb-6">
+              <span class="w-8 h-[2px] bg-white/60"></span>
+              STRATEGY & DESIGN
+            </p>
+            <h1 class="anim anim-2 text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.05] mb-6">
+              Grow your business <span class="text-white/60">faster</span>
+            </h1>
+            <p class="anim anim-3 text-base md:text-lg lg:text-xl text-slate-200/80 leading-relaxed max-w-2xl mb-10">
+              From branding to development — we build products that users love.
+            </p>
+            <div class="anim anim-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <a href="#" class="group inline-flex items-center justify-center px-7 py-3.5 bg-white text-slate-900 font-semibold rounded-full shadow-lg shadow-black/20 hover:bg-slate-100 transition-all duration-300">
+                Our Services
+                <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#" class="inline-flex items-center justify-center px-7 py-3.5 font-semibold text-white rounded-full border border-white/30 hover:border-white/60 hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                Get in Touch
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Dots Navigation -->
+    <nav class="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3" id="slider-dots" aria-label="Slider Pagination">
+      <button data-slide="0" aria-label="Go to slide 1" class="dot w-2.5 h-2.5 rounded-full bg-white transition-all duration-300 scale-110"></button>
+      <button data-slide="1" aria-label="Go to slide 2" class="dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300"></button>
+    </nav>
+
+    <!-- Top subtle bar -->
+    <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent z-30"></div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slider = document.getElementById('hero-slider');
+      const slides = document.querySelectorAll('#slides-container .slide');
+      const contents = document.querySelectorAll('.content-slide');
+      const dots = document.querySelectorAll('#slider-dots .dot');
+      
+      let current = 0;
+      let autoplayTimer = null;
+      const AUTOPLAY_MS = 7000;
+      let isPaused = false;
+
+      // Show slide
+      function showSlide(index) {
+        if (index === current) return;
+        
+        // Update slides (fade)
+        slides.forEach((slide, i) => {
+          if (i === index) {
+            slide.classList.add('opacity-100', 'z-[1]');
+            slide.classList.remove('opacity-0', 'z-0');
+          } else {
+            slide.classList.remove('opacity-100', 'z-[1]');
+            slide.classList.add('opacity-0', 'z-0');
+          }
+        });
+
+        // Update content
+        contents.forEach((content, i) => {
+          content.classList.toggle('active', i === index);
+        });
+
+        // Update dots
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('bg-white', i === index);
+          dot.classList.toggle('bg-white/40', i !== index);
+          dot.classList.toggle('scale-110', i === index);
+          dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+        });
+
+        current = index;
+      }
+
+      function nextSlide() {
+        showSlide((current + 1) % slides.length);
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        if (!isPaused) {
+          autoplayTimer = setInterval(nextSlide, AUTOPLAY_MS);
+        }
+      }
+
+      function stopAutoplay() {
+        clearInterval(autoplayTimer);
+      }
+
+      // Dots click
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const idx = parseInt(dot.dataset.slide, 10);
+          showSlide(idx);
+          startAutoplay();
+        });
+      });
+
+      // Pause on hover
+      slider.addEventListener('mouseenter', () => {
+        isPaused = true;
+        stopAutoplay();
+      });
+      slider.addEventListener('mouseleave', () => {
+        isPaused = false;
+        startAutoplay();
+      });
+
+      // Mouse parallax
+      let ticking = false;
+      slider.addEventListener('mousemove', (e) => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        
+        const rect = slider.getBoundingClientRect();
+        const mx = ((e.clientX - rect.left) / rect.width - 0.5);
+        const my = ((e.clientY - rect.top) / rect.height - 0.5);
+        
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            slider.style.setProperty('--mx', mx.toFixed(3));
+            slider.style.setProperty('--my', my.toFixed(3));
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      slider.addEventListener('mouseleave', () => {
+        slider.style.setProperty('--mx', '0');
+        slider.style.setProperty('--my', '0');
+      });
+
+      // Init
+      showSlide(0);
+      startAutoplay();
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { nextSlide(); startAutoplay(); }
+        if (e.key === 'ArrowLeft') { showSlide((current - 1 + slides.length) % slides.length); startAutoplay(); }
+      });
+    });
+  </script>
+</body>
+</html>

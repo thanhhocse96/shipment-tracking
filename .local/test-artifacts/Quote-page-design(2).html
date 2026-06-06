@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chuyển Đổi Số Nội Bộ - Tài liệu kỹ thuật</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'] }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-[#f6f7f9] font-sans antialiased text-slate-800">
+  <div class="min-h-screen py-4 md:py-8 px-3">
+    <div class="max-w-[1100px] mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
+      
+      <!-- Navigation -->
+      <nav class="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-gray-200">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#1D9E75] ring-4 ring-[#E1F5EE]"></span>
+          <span class="text-[15px] font-medium text-slate-900 tracking-tight">Chuyển Đổi Số Nội Bộ</span>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <div class="hidden lg:flex items-center gap-6 mr-2">
+            <a href="#" class="text-[13.5px] text-slate-600 hover:text-slate-900 transition">MISA</a>
+            <a href="#" class="text-[13.5px] text-slate-600 hover:text-slate-900 transition">Công cụ</a>
+            <a href="#" class="text-[13.5px] text-slate-600 hover:text-slate-900 transition">AI & LLM</a>
+            <a href="#" class="text-[13.5px] text-slate-600 hover:text-slate-900 transition">Triết lý</a>
+          </div>
+          <button class="text-[13px] px-3 py-1.5 rounded-lg border border-gray-300 text-slate-700 hover:bg-gray-50 transition font-medium hidden sm:inline-flex">Đăng nhập</button>
+          <button class="text-[13px] px-3.5 py-1.5 rounded-lg bg-[#E1F5EE] text-[#0F6E56] border border-[#5DCAA5] font-medium hover:bg-[#d2f0e6] transition">Mua tài khoản</button>
+        </div>
+      </nav>
+
+      <!-- Hero -->
+      <div class="px-5 sm:px-8 md:px-10 py-8 md:py-10">
+        <div class="text-[11px] uppercase tracking-widest font-semibold text-[#0F6E56] mb-3">Tài liệu kỹ thuật nội bộ</div>
+        <h1 class="text-[26px] md:text-[30px] font-medium leading-[1.3] text-slate-900 max-w-3xl">Hướng dẫn thực tế cho người dùng MISA và các công cụ chuyển đổi số</h1>
+        <p class="mt-3 text-[15px] text-slate-600 max-w-2xl leading-relaxed">Tổng hợp quy trình, template và mẹo sử dụng hàng ngày — viết ngắn gọn, làm được ngay, cập nhật liên tục.</p>
+        
+        <!-- Search -->
+        <div class="mt-7 flex flex-col sm:flex-row gap-2.5 max-w-3xl">
+          <div class="relative flex-1">
+            <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input id="searchInput" type="text" placeholder="Tìm hướng dẫn... vd: 'đơn vị tính MISA', 'export PDF'" class="w-full pl-10 pr-14 h-[44px] border border-gray-300 rounded-xl text-[14px] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1D9E75]/20 focus:border-[#1D9E75] transition bg-white">
+            <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] bg-gray-100 text-slate-500 px-1.5 py-0.5 rounded-md border border-gray-200 font-medium">⌘K</span>
+          </div>
+          <button id="searchBtn" class="h-[44px] px-6 bg-[#1D9E75] hover:bg-[#178a65] active:bg-[#147456] text-white text-[14px] font-medium rounded-xl transition shrink-0 shadow-sm shadow-[#1D9E75]/20">Tìm</button>
+        </div>
+
+        <!-- Audience tags -->
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-slate-600">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#1D9E75]"></span>
+            Dành cho nhân viên
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-slate-600">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+            Người dùng MISA
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-slate-600">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+            Đối tác bên ngoài
+          </span>
+        </div>
+      </div>
+
+      <!-- Main Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 border-t border-gray-200">
+        <!-- Left Content -->
+        <div class="lg:col-span-2 lg:border-r border-gray-200">
+          <div class="px-5 md:px-6 py-3 border-b border-gray-200 bg-[#fafbfc]">
+            <h2 class="text-[11px] font-semibold tracking-widest text-slate-500">TÀI LIỆU MỚI NHẤT</h2>
+          </div>
+          
+          <div id="docList" class="divide-y divide-gray-100">
+            <!-- Doc 1 -->
+            <article class="doc-item flex gap-4 p-5 md:p-6 hover:bg-gray-50/70 transition cursor-pointer" data-title="Hướng dẫn tạo đơn vị tính mới trên MISA AMIS" data-desc="Các bước tạo gán mã đồng bộ với kho và bán hàng để tránh lỗi xuất hóa đơn">
+              <div class="w-8 h-8 rounded-lg bg-[#E1F5EE] flex items-center justify-center shrink-0 mt-0.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6"/></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[15px] font-medium text-slate-900 leading-snug">Hướng dẫn tạo đơn vị tính mới trên MISA AMIS</h3>
+                <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed">Các bước tạo, gán mã, đồng bộ với kho và bán hàng để tránh lỗi xuất hóa đơn.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-[#E1F5EE] text-[#0F6E56]">Miễn phí</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">MISA</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">Kho</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Doc 2 -->
+            <article class="doc-item flex gap-4 p-5 md:p-6 hover:bg-gray-50/70 transition cursor-pointer" data-title="Export báo cáo PDF không bị lỗi font tiếng Việt" data-desc="Cấu hình font margin và template để in chứng từ chuẩn">
+              <div class="w-8 h-8 rounded-lg bg-[#E6F1FB] flex items-center justify-center shrink-0 mt-0.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D5B9E" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[15px] font-medium text-slate-900 leading-snug">Export báo cáo PDF không bị lỗi font tiếng Việt</h3>
+                <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed">Cấu hình font, margin và template để in chứng từ chuẩn.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-[#E1F5EE] text-[#0F6E56]">Miễn phí</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">Công cụ</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">PDF</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Doc 3 -->
+            <article class="doc-item flex gap-4 p-5 md:p-6 hover:bg-gray-50/70 transition cursor-pointer" data-title="Prompt mẫu viết email chăm sóc khách hàng bằng AI" data-desc="Bộ prompt đã test dùng cho GPT Claude để trả lời nhanh và đúng giọng điệu công ty">
+              <div class="w-8 h-8 rounded-lg bg-[#EEEDFE] flex items-center justify-center shrink-0 mt-0.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B4DB8" stroke-width="2"><path d="M12 3l1.9 5.8h6.1l-4.9 3.6 1.9 5.8-4.9-3.6-4.9 3.6 1.9-5.8-4.9-3.6h6.1z"/></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[15px] font-medium text-slate-900 leading-snug">Prompt mẫu viết email chăm sóc khách hàng bằng AI</h3>
+                <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed">Bộ prompt đã test, dùng cho GPT/Claude để trả lời nhanh và đúng giọng điệu công ty.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-[#E6F1FB] text-[#1D5B9E]">Nội bộ</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">AI & LLM</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">CSKH</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Doc 4 -->
+            <article class="doc-item flex gap-4 p-5 md:p-6 hover:bg-gray-50/70 transition cursor-pointer" data-title="Xử lý chênh lệch tồn kho giữa MISA và thực tế" data-desc="Checklist kiểm tra cách đối chiếu và bút toán điều chỉnh">
+              <div class="w-8 h-8 rounded-lg bg-[#E1F5EE] flex items-center justify-center shrink-0 mt-0.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M3 6h18M7 6v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[15px] font-medium text-slate-900 leading-snug">Xử lý chênh lệch tồn kho giữa MISA và thực tế</h3>
+                <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed">Checklist kiểm tra, cách đối chiếu và bút toán điều chỉnh.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-amber-100 text-amber-800">Đã khóa</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">MISA</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">Kiểm kê</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Doc 5 -->
+            <article class="doc-item flex gap-4 p-5 md:p-6 hover:bg-gray-50/70 transition cursor-pointer" data-title="Tự động hóa báo cáo tuần bằng Google Sheets + Apps Script" data-desc="Kết nối dữ liệu gửi email tự động mỗi sáng thứ 2">
+              <div class="w-8 h-8 rounded-lg bg-[#E6F1FB] flex items-center justify-center shrink-0 mt-0.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1D5B9E" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[15px] font-medium text-slate-900 leading-snug">Tự động hóa báo cáo tuần bằng Google Sheets + Apps Script</h3>
+                <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed">Kết nối dữ liệu, gửi email tự động mỗi sáng thứ 2.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-[#E6F1FB] text-[#1D5B9E]">Nội bộ</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">Công cụ</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">Automation</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Doc 6 -->
+            <article class="doc-item flex gap-4 p-5 md:p-6 hover:bg-gray-50/70 transition cursor-pointer" data-title="Tích hợp AI vào quy trình duyệt nội dung" data-desc="Workflow review checklist an toàn dữ liệu ví dụ thực tế">
+              <div class="w-8 h-8 rounded-lg bg-[#EEEDFE] flex items-center justify-center shrink-0 mt-0.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B4DB8" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 0 0 0 1 1.51 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-[15px] font-medium text-slate-900 leading-snug">Tích hợp AI vào quy trình duyệt nội dung</h3>
+                <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed">Workflow review, checklist an toàn dữ liệu, ví dụ thực tế.</p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-amber-100 text-amber-800">Đã khóa</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">AI & LLM</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] bg-gray-100 text-gray-600">Quy trình</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="p-5 md:p-6 bg-white">
+          <h2 class="text-[11px] font-semibold tracking-widest text-slate-500 mb-3">DANH MỤC</h2>
+          <div class="space-y-2">
+            <button class="w-full flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:border-[#5DCAA5] hover:bg-[#E1F5EE]/40 transition group text-left">
+              <span class="text-[14px] text-slate-700 group-hover:text-[#0F6E56] font-medium">MISA AMIS</span>
+              <span class="text-xs text-slate-500 bg-gray-100 group-hover:bg-white px-2 py-0.5 rounded-full font-medium">89</span>
+            </button>
+            <button class="w-full flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:border-[#5DCAA5] hover:bg-[#E1F5EE]/40 transition group text-left">
+              <span class="text-[14px] text-slate-700 group-hover:text-[#0F6E56] font-medium">Công cụ văn phòng</span>
+              <span class="text-xs text-slate-500 bg-gray-100 group-hover:bg-white px-2 py-0.5 rounded-full font-medium">156</span>
+            </button>
+            <button class="w-full flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:border-[#5DCAA5] hover:bg-[#E1F5EE]/40 transition group text-left">
+              <span class="text-[14px] text-slate-700 group-hover:text-[#0F6E56] font-medium">AI & LLM</span>
+              <span class="text-xs text-slate-500 bg-gray-100 group-hover:bg-white px-2 py-0.5 rounded-full font-medium">47</span>
+            </button>
+            <button class="w-full flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:border-[#5DCAA5] hover:bg-[#E1F5EE]/40 transition group text-left">
+              <span class="text-[14px] text-slate-700 group-hover:text-[#0F6E56] font-medium">Quy trình nội bộ</span>
+              <span class="text-xs text-slate-500 bg-gray-100 group-hover:bg-white px-2 py-0.5 rounded-full font-medium">234</span>
+            </button>
+            <button class="w-full flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:border-[#5DCAA5] hover:bg-[#E1F5EE]/40 transition group text-left">
+              <span class="text-[14px] text-slate-700 group-hover:text-[#0F6E56] font-medium">Tài chính - Kế toán</span>
+              <span class="text-xs text-slate-500 bg-gray-100 group-hover:bg-white px-2 py-0.5 rounded-full font-medium">112</span>
+            </button>
+          </div>
+
+          <div class="mt-6 p-4 rounded-xl bg-[#fafbfc] border border-gray-200">
+            <h3 class="text-[14px] font-semibold text-slate-900">Truy cập đầy đủ</h3>
+            <p class="text-[13px] text-slate-600 mt-1.5 leading-relaxed">Đăng nhập bằng email công ty để xem tài liệu nội bộ và tải file đính kèm.</p>
+            <button class="w-full mt-3.5 py-2.5 bg-[#1D9E75] hover:bg-[#178a65] text-white text-[13.5px] font-medium rounded-lg transition shadow-sm">Đăng nhập bằng email công ty</button>
+            <p class="text-center mt-2.5">
+              <a href="#" class="text-[12px] text-slate-500 hover:text-[#0F6E56] underline underline-offset-2">Đã có tài khoản? Đăng nhập</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 border-t border-gray-200 bg-[#fcfdfd] divide-y md:divide-y-0 md:divide-x divide-gray-200">
+        <div class="p-5 text-center">
+          <div class="text-[22px] font-semibold text-slate-900 tracking-tight">1,247</div>
+          <div class="text-xs text-slate-500 mt-1">Tài liệu</div>
+        </div>
+        <div class="p-5 text-center">
+          <div class="text-[22px] font-semibold text-slate-900 tracking-tight">89</div>
+          <div class="text-xs text-slate-500 mt-1">Hướng dẫn MISA</div>
+        </div>
+        <div class="p-5 text-center">
+          <div class="text-[22px] font-semibold text-slate-900 tracking-tight">342</div>
+          <div class="text-xs text-slate-500 mt-1">Nhân viên</div>
+        </div>
+        <div class="p-5 text-center">
+          <div class="text-[22px] font-semibold text-slate-900 tracking-tight">24/7</div>
+          <div class="text-xs text-slate-500 mt-1">Cập nhật</div>
+        </div>
+      </div>
+
+    </div>
+    
+    <p class="text-center text-[11px] text-slate-400 mt-6">© 2025 Chuyển Đổi Số Nội Bộ • Phiên bản nội bộ</p>
+  </div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.getElementById('searchBtn');
+  const items = document.querySelectorAll('.doc-item');
+  
+  function filterDocs() {
+    const q = searchInput.value.toLowerCase().trim();
+    items.forEach(el => {
+      const title = el.dataset.title.toLowerCase();
+      const desc = el.dataset.desc.toLowerCase();
+      const match = title.includes(q) || desc.includes(q);
+      el.style.display = match ? '' : 'none';
+    });
+  }
+  
+  searchInput.addEventListener('input', filterDocs);
+  searchBtn.addEventListener('click', filterDocs);
+  
+  window.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+    }
+  });
+</script>
+<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
+</body>
+</html>

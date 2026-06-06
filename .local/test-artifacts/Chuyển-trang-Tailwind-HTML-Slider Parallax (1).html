@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus — Modern Business Slider</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --mx: 0; --my: 0; }
+    * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #030712; }
+    h1, h2, .display { font-family: 'Outfit', sans-serif; }
+    
+    /* Strong Parallax */
+    .blob1 { transform: translate3d(calc(var(--mx) * -80px), calc(var(--my) * -60px), 0); }
+    .blob2 { transform: translate3d(calc(var(--mx) * 70px), calc(var(--my) * -50px), 0); }
+    .blob3 { transform: translate3d(calc(var(--mx) * -50px), calc(var(--my) * 70px), 0); }
+    
+    .parallax-bg {
+      transform: translate3d(calc(var(--mx) * 25px), calc(var(--my) * 15px), 0) scale(1.1);
+      will-change: transform;
+    }
+    .content-parallax {
+      transform: translate3d(calc(var(--mx) * -15px), calc(var(--my) * -10px), 0);
+      will-change: transform;
+    }
+    
+    @media (max-width: 768px), (pointer: coarse) {
+      .blob1, .blob2, .blob3, .parallax-bg, .content-parallax {
+        transform: none !important;
+      }
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1), visibility 1.2s;
+    }
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 10;
+    }
+    .slide .animate-in > * {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.8s cubic-bezier(0.2,0.8,0.2,1);
+    }
+    .slide.active .animate-in > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .slide.active .animate-in > *:nth-child(1) { transition-delay: 0.05s; }
+    .slide.active .animate-in > *:nth-child(2) { transition-delay: 0.15s; }
+    .slide.active .animate-in > *:nth-child(3) { transition-delay: 0.25s; }
+    .slide.active .animate-in > *:nth-child(4) { transition-delay: 0.35s; }
+
+    .glass {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .progress-bar {
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+    .progress-bar.active {
+      animation: progress 7000ms linear forwards;
+    }
+    @keyframes progress { to { transform: scaleX(1); } }
+  </style>
+</head>
+<body class="overflow-hidden text-white selection:bg-violet-500/30 selection:text-violet-200">
+  <div class="relative h-screen w-screen overflow-hidden bg-[#030712]">
+    <!-- Enhanced Blobs -->
+    <div class="pointer-events-none absolute inset-0 z-0">
+      <div class="blob1 absolute -top-[25%] -left-[20%] w-[900px] h-[900px] rounded-full bg-violet-600/40 blur-[160px]"></div>
+      <div class="blob2 absolute -bottom-[35%] -right-[15%] w-[800px] h-[800px] rounded-full bg-teal-400/35 blur-[140px]"></div>
+      <div class="blob3 absolute top-[5%] right-[10%] w-[700px] h-[700px] rounded-full bg-blue-600/35 blur-[150px]"></div>
+    </div>
+
+    <div class="pointer-events-none absolute inset-0 z-[1] opacity-[0.035] mix-blend-soft-light" style="background-image:url('https://grainy-gradients.vercel.app/noise.svg')"></div>
+
+    <!-- Nav -->
+    <header class="absolute top-0 left-0 right-0 z-50">
+      <nav class="container mx-auto px-6 lg:px-12 h-[84px] flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-blue-500 flex items-center justify-center shadow-lg shadow-violet-600/25">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" stroke="white" stroke-width="2" fill="white" fill-opacity="0.2"/></svg>
+          </div>
+          <span class="display text-[22px] font-semibold tracking-tight">nexus</span>
+        </div>
+        <div class="hidden md:flex items-center gap-8 text-[14px] text-white/70">
+          <a href="#" class="hover:text-white transition">Solutions</a>
+          <a href="#" class="hover:text-white transition">Platform</a>
+          <a href="#" class="hover:text-white transition">Customers</a>
+          <a href="#" class="hover:text-white transition">Resources</a>
+        </div>
+        <button class="glass px-4 py-2 rounded-full text-sm font-medium hover:bg-white/10 transition">Get Started</button>
+      </nav>
+    </header>
+
+    <!-- Slider -->
+    <main id="slider" class="relative h-screen w-full cursor-default">
+      <!-- Slide 1 -->
+      <section class="slide active" data-index="0">
+        <div class="parallax-bg absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2574&auto=format&fit=crop" alt="Team collaboration" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-[#030712]/70"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#030712] via-[#030712]/80 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-[#030712]/40"></div>
+        </div>
+        <div class="relative z-10 h-full flex items-center">
+          <div class="content-parallax w-full">
+            <div class="container mx-auto px-6 lg:px-12">
+              <div class="max-w-[800px] animate-in">
+                <div class="inline-flex items-center gap-2 glass rounded-full px-3.5 py-1.5 mb-6">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span class="text-[11px] uppercase tracking-widest font-medium text-white/85">New — AI Operating System</span>
+                </div>
+                <h1 class="display text-[clamp(42px,7vw,88px)] font-[800] leading-[0.88] tracking-[-0.02em]">
+                  Transform your business
+                  <span class="block text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-blue-300 to-teal-300 pb-2">with intelligence</span>
+                </h1>
+                <p class="mt-6 text-[18px] md:text-[20px] leading-relaxed text-white/70 max-w-[600px] font-light">
+                  Nexus unifies data, automation, and AI into one platform. Ship products 3x faster, reduce costs by 40%, and delight customers at scale.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row gap-3">
+                  <button class="group relative px-7 py-[14px] rounded-full bg-white text-black font-medium overflow-hidden hover:shadow-xl hover:shadow-white/10 transition">
+                    <span class="relative z-10 flex items-center gap-2">Start building <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></span>
+                  </button>
+                  <button class="px-7 py-[14px] rounded-full glass font-medium hover:bg-white/10 transition flex items-center gap-2">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-white/80"><path d="M8 5.14v14l11-7-11-7z"/></svg>
+                    Watch 2-min demo
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 2 -->
+      <section class="slide" data-index="1">
+        <div class="parallax-bg absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop" alt="Scale" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-[#030712]/75"></div>
+          <div class="absolute inset-0 bg-gradient-to-l from-[#030712] via-[#030712]/80 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-[#030712]/40"></div>
+        </div>
+        <div class="relative z-10 h-full flex items-center">
+          <div class="content-parallax w-full">
+            <div class="container mx-auto px-6 lg:px-12">
+              <div class="max-w-[800px] ml-auto text-right animate-in">
+                <div class="inline-flex items-center gap-2 glass rounded-full px-3.5 py-1.5 mb-6">
+                  <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                  <span class="text-[11px] uppercase tracking-widest font-medium text-white/85">Enterprise Grade • SOC2 • HIPAA</span>
+                </div>
+                <h2 class="display text-[clamp(42px,7vw,88px)] font-[800] leading-[0.88] tracking-[-0.02em]">
+                  Scale faster.
+                  <span class="block text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-sky-300 to-violet-300 pb-2">Work smarter.</span>
+                </h2>
+                <p class="mt-6 text-[18px] md:text-[20px] leading-relaxed text-white/70 max-w-[600px] ml-auto font-light">
+                  From startup to Fortune 500 — deploy workflows in days, not months. Real-time analytics, custom AI models, and 99.99% uptime SLA.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-end">
+                  <button class="px-7 py-[14px] rounded-full glass font-medium hover:bg-white/10 transition">See customer stories</button>
+                  <button class="px-7 py-[14px] rounded-full bg-white text-black font-medium hover:bg-white/90 transition">Talk to sales</button>
+                </div>
+                <div class="mt-14 grid grid-cols-3 gap-4 max-w-[500px] ml-auto">
+                  <div class="glass rounded-2xl p-5 hover:bg-white/10 transition">
+                    <div class="text-[32px] font-semibold display">3x</div>
+                    <div class="text-xs text-white/60 mt-1">Faster delivery</div>
+                  </div>
+                  <div class="glass rounded-2xl p-5 hover:bg-white/10 transition">
+                    <div class="text-[32px] font-semibold display">40%</div>
+                    <div class="text-xs text-white/60 mt-1">Cost reduction</div>
+                  </div>
+                  <div class="glass rounded-2xl p-5 hover:bg-white/10 transition">
+                    <div class="text-[32px] font-semibold display">99.99%</div>
+                    <div class="text-xs text-white/60 mt-1">Uptime</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Controls -->
+    <div class="absolute bottom-0 left-0 right-0 z-40">
+      <div class="container mx-auto px-6 lg:px-12 pb-8 md:pb-10">
+        <div class="flex items-end justify-between gap-6">
+          <div class="flex items-center gap-3">
+            <button id="prev" aria-label="Previous" class="w-11 h-11 rounded-full glass flex items-center justify-center hover:bg-white/15 active:scale-95 transition group">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:-translate-x-0.5 transition-transform"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button id="next" aria-label="Next" class="w-11 h-11 rounded-full glass flex items-center justify-center hover:bg-white/15 active:scale-95 transition group">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-0.5 transition-transform"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            <div class="hidden sm:flex items-center gap-3 ml-3 pl-3 border-l border-white/10">
+              <span id="current" class="text-sm font-medium w-5 text-right tabular-nums">01</span>
+              <div class="w-20 h-[2px] bg-white/15 rounded-full overflow-hidden">
+                <div id="progress" class="progress-bar h-full w-full bg-gradient-to-r from-violet-400 to-blue-400"></div>
+              </div>
+              <span class="text-sm text-white/50 w-5 tabular-nums">02</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button data-dot="0" class="dot group relative w-10 h-6 flex items-center justify-center" aria-label="Slide 1">
+              <span class="w-8 h-[3px] rounded-full bg-white transition-all"></span>
+            </button>
+            <button data-dot="1" class="dot group relative w-10 h-6 flex items-center justify-center" aria-label="Slide 2">
+              <span class="w-8 h-[3px] rounded-full bg-white/30 group-hover:bg-white/50 transition-all"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const slider = document.getElementById('slider');
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const currentEl = document.getElementById('current');
+    const progressEl = document.getElementById('progress');
+
+    let current = 0;
+    let autoplayTimer;
+    const AUTOPLAY_MS = 7000;
+
+    // Smooth parallax with lerp
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    const isTouch = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+
+    function animateParallax() {
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+      
+      if (!isTouch) {
+        document.documentElement.style.setProperty('--mx', currentX.toFixed(4));
+        document.documentElement.style.setProperty('--my', currentY.toFixed(4));
+      }
+      requestAnimationFrame(animateParallax);
+    }
+    animateParallax();
+
+    slider.addEventListener('mousemove', (e) => {
+      if (isTouch) return;
+      const rect = slider.getBoundingClientRect();
+      targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      targetX = 0;
+      targetY = 0;
+    });
+
+    function updateDots() {
+      dots.forEach((dot, i) => {
+        const bar = dot.querySelector('span');
+        if (i === current) {
+          bar.classList.add('bg-white');
+          bar.classList.remove('bg-white/30');
+          bar.style.width = '32px';
+        } else {
+          bar.classList.remove('bg-white');
+          bar.classList.add('bg-white/30');
+          bar.style.width = '32px';
+        }
+      });
+    }
+
+    function show(index) {
+      slides[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      currentEl.textContent = String(current + 1).padStart(2, '0');
+      updateDots();
+      restartProgress();
+    }
+
+    function restartProgress() {
+      progressEl.classList.remove('active');
+      void progressEl.offsetWidth;
+      progressEl.classList.add('active');
+    }
+
+    function next() { show(current + 1); resetAutoplay(); }
+    function prev() { show(current - 1); resetAutoplay(); }
+
+    function resetAutoplay() {
+      clearInterval(autoplayTimer);
+      autoplayTimer = setInterval(next, AUTOPLAY_MS);
+    }
+
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+    dots.forEach(d => d.addEventListener('click', () => { show(+d.dataset.dot); resetAutoplay(); }));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+
+    // Touch swipe
+    let touchStartX = 0;
+    slider.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX, { passive: true });
+    slider.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) dx < 0 ? next() : prev();
+    });
+
+    // Init
+    updateDots();
+    restartProgress();
+    resetAutoplay();
+
+    // Disable parallax on mobile
+    if (isTouch) {
+      document.documentElement.style.setProperty('--mx', '0');
+      document.documentElement.style.setProperty('--my', '0');
+    }
+  </script>
+</body>
+</html>

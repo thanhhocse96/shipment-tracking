@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seven Agency</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+
+  <!-- HERO -->
+  <section id="hero" class="relative min-h-[100vh] flex items-center justify-center bg-[#0b1120] text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1920')"></div>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40"></div>
+    
+    <div class="relative z-10 max-w-3xl px-6 text-center">
+      <img src="https://the7.io/elementor-agency/wp-content/uploads/sites/75/2020/09/logo-ag-01.svg" alt="Seven Agency" class="h-14 w-auto mx-auto invert brightness-0 mb-8">
+      <p class="uppercase tracking-widest text-sm text-white/70 mb-3">Seven Agency</p>
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">Smart digital solutions</h1>
+      <div class="mt-10 flex justify-center gap-4">
+        <a href="#" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition">Our works</a>
+        <a href="#" class="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition">Contact us</a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs tracking-widest text-white/50">
+      SCROLL DOWN
+    </div>
+  </section>
+
+  <!-- HEADER -->
+  <header id="site-header" class="relative w-full bg-white border-b border-transparent">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="flex h-[72px] items-center justify-between">
+        <a href="#" class="flex items-center">
+          <img src="https://the7.io/elementor-agency/wp-content/uploads/sites/75/2020/09/logo-ag-01.svg" class="h-8 w-auto" alt="Seven">
+        </a>
+        
+        <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-slate-600">
+          <a href="#" class="hover:text-slate-900 transition">Home</a>
+          <a href="#" class="hover:text-slate-900 transition">About</a>
+          <a href="#" class="hover:text-slate-900 transition">Services</a>
+          <a href="#" class="hover:text-slate-900 transition">Portfolio</a>
+          <a href="#" class="hover:text-slate-900 transition">Pricing</a>
+          <a href="#" class="hover:text-slate-900 transition">How we work</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a href="#" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-black transition">Contact us</a>
+          <button class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg text-slate-700 hover:bg-slate-100" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div id="header-spacer" class="hidden"></div>
+
+  <!-- MAIN -->
+  <main class="mx-auto max-w-7xl px-6 py-24">
+    <h2 class="text-3xl font-bold tracking-tight">Who we are</h2>
+    <p class="mt-4 max-w-2xl text-slate-600 leading-relaxed">Experienced UX and Web designers, crafting innovative digital solutions for clients worldwide.</p>
+  </main>
+
+  <script>
+    const header = document.getElementById('site-header');
+    const hero = document.getElementById('hero');
+    const spacer = document.getElementById('header-spacer');
+    const headerHeight = 72;
+
+    function onScroll() {
+      if (window.scrollY > hero.offsetHeight - headerHeight) {
+        header.classList.add('fixed','top-0','left-0','right-0','shadow-sm','z-50','border-slate-200');
+        spacer.style.height = headerHeight + 'px';
+        spacer.classList.remove('hidden');
+      } else {
+        header.classList.remove('fixed','top-0','left-0','right-0','shadow-sm','z-50','border-slate-200');
+        spacer.classList.add('hidden');
+      }
+    }
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  </script>
+
+</body>
+</html>
