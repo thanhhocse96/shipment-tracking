@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SECRET_FILE="/root/.skvn-local/minhhaifish.env"
-ENV_FILE="/mnt/d/Github/skvn-marine/.local/ENVIRONMENT.md"
+ENV_FILE="/mnt/d/Github/shipment-tracking/.local/ENVIRONMENT.md"
 
 # shellcheck disable=SC1090
 . "$SECRET_FILE"
@@ -14,6 +14,9 @@ ENV_FILE="/mnt/d/Github/skvn-marine/.local/ENVIRONMENT.md"
 	printf '%s\n' ''
 	printf '%s\n' 'WP_RUNTIME_ROOT_WINDOWS=D:\Github\minhhaifish'
 	printf '%s\n' 'WP_RUNTIME_ROOT_WSL=/mnt/d/Github/minhhaifish'
+	printf '%s\n' 'PROJECT_ROOT_WINDOWS=D:\Github\shipment-tracking'
+	printf '%s\n' 'PROJECT_ROOT_WSL=/mnt/d/Github/shipment-tracking'
+	printf '%s\n' 'PLUGIN_RUNTIME_ROOT_WSL=/mnt/d/Github/minhhaifish/wp-content/plugins/skvn-shipment-tracking'
 	printf '%s\n' "WP_URL=$WP_URL"
 	printf '%s\n' ''
 	printf '%s\n' "WP_ADMIN_USER=$WP_ADMIN_USER"
@@ -27,7 +30,7 @@ ENV_FILE="/mnt/d/Github/skvn-marine/.local/ENVIRONMENT.md"
 	printf '%s\n' ''
 	printf '%s\n' 'WP_CLI_BASE=wp --path=/mnt/d/Github/minhhaifish --allow-root'
 	printf '%s\n' ''
-	printf '%s\n' 'NOTES=Runtime root has WordPress core, GeneratePress parent theme, SKVN child theme, SKVN custom blocks plugin, and required external plugins installed.'
+	printf '%s\n' 'NOTES=Runtime root has WordPress core, GeneratePress, SKVN child theme, and SKVN custom blocks. Thumbpress is required and must be verified separately. Shipment tracking is synced when its bootstrap exists.'
 } > "$ENV_FILE"
 
 chmod 600 "$ENV_FILE"

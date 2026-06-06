@@ -1,5 +1,9 @@
 # SKVN Layout Translator CLI
 
+This is an inherited development utility, not shipment tracking runtime code.
+For tracking artifacts, generated generic `skvn-*` classes are proposals only;
+production plugin classes must follow the `skvn-tracking-` contract.
+
 Dev-only CLI for translating AI-made HTML/CSS artifacts or screenshots into SKVN Marine Gutenberg pattern components.
 
 This tool does not modify WordPress runtime content. It reads an artifact and outputs a translation report for review.

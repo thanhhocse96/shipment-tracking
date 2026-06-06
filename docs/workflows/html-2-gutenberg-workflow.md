@@ -1,5 +1,11 @@
 # HTML-2-Gutenberg Workflow
 
+> Shared SKVN reference utility only. It is not part of the shipment tracking
+> runtime or current milestone. When used for a future tracking UI artifact,
+> `AGENTS.md`, `AGENTS_MODULES.md`, and the `skvn-tracking-` prefix take
+> precedence; theme source is inspected read-only from the separate
+> `skvn-marine` repository.
+
 Purpose: translate human-provided HTML artifacts into SKVN Marine Gutenberg patterns without putting raw CSS or JavaScript into page content.
 
 Product name: **HTML-2-Gutenberg**.

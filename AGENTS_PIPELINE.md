@@ -72,6 +72,17 @@ wp-content/uploads/shipments/
     └── blurred-thumb.webp     ← public, dùng cho grid và public view
 ```
 
+Expected operating scale:
+
+```
+~30 WebP/batch
+2-3 batches/month
+~1 GB/year
+10 GB hosting
+```
+
+Không implement archive/zip lifecycle trong V1.
+
 ## Photo Category — Auto-detect
 
 | Zone | Auto-detect từ filename |
@@ -84,3 +95,9 @@ wp-content/uploads/shipments/
 Priority: manual override (staff kéo vào zone) > auto-detect.
 
 "Số thuần" → prefix "row-" tự động. "28 (3)" → label "Row 28 - 3".
+
+## Deferred Decisions
+
+- Blur level cho `blurred-thumb.webp`
+- Mobile image/gallery behavior chưa có wireframe
+- Lightbox navigation cross-category hay current category

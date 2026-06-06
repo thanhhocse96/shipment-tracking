@@ -1,42 +1,57 @@
-# AI Rules for SKVN Marine
+# AI Rules for SKVN Shipment Tracking
 
-## Project Names
+## Project Identity
 
 - Plugin: `skvn-shipment-tracking`
-- Block namespace: `skvn-shipment`
-- Plugin PHP prefix: `skvn_shipment-tracking`
-- CSS prefix: `skvn-`
+- CPT: `skvn_shipment`
+- PHP prefix: `skvn_tracking_`
+- CSS prefix: `skvn-tracking-`
+- Text domain: `skvn-shipment-tracking`
+- Upload root: `wp-content/uploads/shipments/`
+- PHP compatibility: 8.0
+
+## Source Priority
+
+1. Human-provided shipment tracking fact/design document
+2. `AGENTS.md` and relevant `AGENTS_*.md`
+3. `.context/` current milestone and tension state
+4. `docs/` and inherited utilities
+
+Copied SKVN Marine files are reference material only until adapted to this
+project. They cannot change plugin identity, prefix, ownership, or scope.
 
 ## Non-Negotiable Rules
 
-- Do not edit `wp-content/themes/generatepress/`.
-- Do not create custom Gutenberg blocks inside the theme.
-- Put custom blocks in `skvn-shipment-tracking`.
-- Use `block.json` for custom block metadata.
-- Use `theme.json` for design tokens.
-- Use `editor.css` for Gutenberg preview.
-- Use frontend CSS/JS for frontend animation.
-- Do not add dependencies without writing rationale.
-- Do not rename namespace/prefix without explicit approval.
-- Do not use shortcodes for primary layout, except CF7 shortcode usage in quote form patterns.
-- Do not overwrite manually entered image ALT text.
-- Do not auto-generate captions in V1.
+- Do not edit GeneratePress or the `skvn-marine` theme.
+- Follow the theme visual contract without moving theme tokens into the plugin.
+- Do not touch WooCommerce data or external plugin internals.
+- Thumbpress owns WebP conversion; this plugin only hooks into its pipeline.
+- Generate exactly one `blurred-thumb.webp` per batch.
+- Never expose original shipment images without a valid token.
+- Render the staff share button server-side; customers must not receive it in DOM.
+- Keep `/tracking/` indexable and every other `/tracking/*` surface noindex.
+- Do not expose client names on public surfaces.
+- Do not implement Quote Flow, `/contact/` content, n8n, or archive lifecycle here.
+- Sanitize input, escape output, and verify nonces for every form.
+- Do not overwrite manually entered image captions/ALT text.
+- Do not implement a later milestone without human promotion.
+- Do not archive or resolve tension entries without human approval.
 
-## AI Task Format
+## Task Scope
 
-Every task should include:
+Every implementation task should identify:
 
-1. Context
-2. Goal
-3. Files allowed to change
-4. Files forbidden to change
-5. Acceptance checklist
-6. Tension/conflict section
+1. Current milestone and acceptance criteria
+2. Files allowed to change
+3. Relevant `AGENTS_*.md` references
+4. Security and access-control implications
+5. Verification commands
+6. New tension, if the requirement remains undecided
 
-## File Scope Rule
+Prefer 3-5 changed files per focused task. Cross-cutting documentation/tooling
+sync may exceed that when the human explicitly requests repository-wide cleanup.
 
-By default, AI should not modify more than 3–5 files per task.
+## Verification
 
-## Tension Rule
-
-If a requested change conflicts with the rules above, AI must record the tension instead of silently breaking the architecture.
+Follow the verification gate in `AGENTS.md`. Any failing consistency, PHP
+syntax, or prefix check must be fixed before commit.

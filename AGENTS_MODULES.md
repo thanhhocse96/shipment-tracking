@@ -27,6 +27,20 @@ Rủi ro: WP update thay đổi Media Library UI markup → JS selector cần up
 
 4 drop zones: Seal & Door Check, Temperature Monitoring, Cargo Rows, Uncategory.
 
+Form fields:
+
+```
+Tên batch/thư mục
+Thông tin thêm
+Tên khách hàng
+Số container
+Ngày đóng hàng
+Loại sản phẩm
+```
+
+Desktop portal có sticky zone navigation. Mobile layout chưa có wireframe,
+không tự quyết định contract mới.
+
 Upload flow (tóm tắt):
 1. Staff điền form metadata
 2. Drag ảnh vào zone
@@ -51,6 +65,8 @@ Card: blurred thumbnail + batch title + product type + năm
 Client name: KHÔNG hiển thị
 Bấm card: redirect /contact/ — không mở batch
 ```
+
+Grid grouping còn OPEN: chronological hay group theo product type.
 
 ---
 
@@ -79,6 +95,8 @@ Share button: server-side render, chỉ staff thấy
 Lightbox: thumbnail strip + keyboard nav + mobile swipe
 ```
 
+Lightbox cross-category hay chỉ current category còn OPEN.
+
 ---
 
 ## Redact Logic
@@ -99,3 +117,8 @@ Closing date:     "2024-01-15"            →  "2024"
 /tracking/[slug]/?token=  → NOINDEX
 /tracking/upload/         → NOINDEX
 ```
+
+## Scope Boundaries
+
+Plugin không sở hữu nội dung `/contact/`, Quote Flow, CF7/CFDB7 hay n8n.
+Public card/image chỉ redirect sang `/contact/`.

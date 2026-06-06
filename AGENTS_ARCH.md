@@ -16,6 +16,32 @@ CPT:            skvn_shipment
 PHP version:    8.0 (shared hosting constraint)
 ```
 
+## CPT Contract
+
+```php
+post_type: skvn_shipment
+public:    false
+rewrite:   false
+```
+
+Plugin tự handle routing cho `/tracking/*`; không dùng default WordPress
+single/archive template của CPT.
+
+### Batch Meta
+
+| Meta key | Purpose | Public exposure |
+|---|---|---|
+| `_skvn_batch_title` | Tên batch/thư mục | Full |
+| `_skvn_batch_notes` | Ghi chú nội bộ | Không |
+| `_skvn_client_name` | Tên khách hàng | Redacted |
+| `_skvn_container_number` | Số container | Redacted |
+| `_skvn_closing_date` | Ngày đóng hàng | Chỉ năm |
+| `_skvn_product_type` | Loại sản phẩm | Full |
+| `_skvn_token` | Token access 32-char hex | Không |
+| `_skvn_thumb_blurred` | Internal blurred thumb path | Không |
+
+Attachment thuộc batch phải có `_skvn_shipment_id`.
+
 ## PHP Security — Bắt buộc mỗi khi xử lý input/output
 
 ```php
@@ -76,9 +102,13 @@ Token: 32-char random hex. Generate khi tạo batch.
 Original files không có public URL trừ khi valid token trong request.
 Staff portal login: inline form, KHÔNG redirect `/wp-login.php`.
 
+Valid token → client view full resolution, client name visible, NOINDEX.
+Invalid token → redirect sang public view, không trả partial private data.
+
 ## Không Đụng Vào
 
 - `themes/generatepress/` — tuyệt đối không
 - `skvn-marine` theme — không sửa
 - WooCommerce data
 - Thumbpress internals — chỉ hook vào, không sửa
+- Trang `/contact/` và Quote Flow — WordPress/site scope khác

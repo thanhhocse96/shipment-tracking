@@ -3,12 +3,12 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "$script_dir/.." && pwd)"
-source_dir="$repo_root/build/wp-content/plugins/skvn-marine-blocks"
-output_zip="$repo_root/build/skvn-marine-blocks.zip"
+source_dir="$repo_root/build/skvn-shipment-tracking"
+output_zip="$repo_root/build/skvn-shipment-tracking.zip"
 
 if [[ ! -d "$source_dir" ]]; then
-	echo "Missing plugin artifact: $source_dir"
-	echo "Run tools/build-deploy-artifact.mjs before packaging."
+	echo "Missing plugin artifact: $source_dir" >&2
+	echo "Run node tools/build-deploy-artifact.mjs first." >&2
 	exit 1
 fi
 
@@ -36,7 +36,7 @@ with zipfile.ZipFile(output_zip, "w", zipfile.ZIP_DEFLATED) as archive:
             archive.write(full_path, os.path.join(root_name, rel_path))
 PY
 else
-	echo "Missing zip tool. Install zip or ensure python3 is available."
+	echo "Missing zip tool. Install zip or ensure python3 is available." >&2
 	exit 1
 fi
 

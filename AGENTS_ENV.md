@@ -15,6 +15,9 @@ Thumbpress          image optimization — plugin chỉ hook vào
 PHP                 8.0 (shared hosting constraint)
 ```
 
+External site plugins như CF7, CFDB7, Rank Math và Polylang không thuộc
+ownership của shipment tracking. Không copy hoặc sửa source của chúng.
+
 ## Plugin Location
 
 ```
@@ -59,3 +62,4 @@ Shared hosting: không có root access. WP-CLI có thể không available — ki
 Plugin không chạy code nào ngoài WordPress request lifecycle.
 Không có cron job hay background process trong milestone 0.1.0.
 n8n automation → sau 1.0.0, không implement bây giờ.
+Không cần archive/zip lifecycle cho shipment images trong V1.

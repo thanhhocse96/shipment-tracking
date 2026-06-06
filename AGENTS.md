@@ -15,6 +15,16 @@ Mỗi lần bắt đầu task, thực hiện theo thứ tự:
 4. Đọc module context liên quan đến task (xem Reference Files bên dưới)
 5. Đọc `.local/ENVIRONMENT.md` nếu tồn tại — trước khi chạy bất kỳ lệnh local nào
 
+Source hierarchy khi tài liệu mâu thuẫn:
+
+1. Human-provided plugin fact/design document
+2. `AGENTS.md` + `AGENTS_*.md`
+3. `.context/` cho milestone/tension state hiện tại
+4. `docs/` và tooling kế thừa
+
+Tài liệu copy từ `skvn-marine` không được override identity, prefix, scope hoặc
+ownership boundary của plugin này.
+
 ---
 
 ## 2. Current Milestone
@@ -69,12 +79,14 @@ PHP prefix: `skvn_tracking_`
 CSS prefix: `skvn-tracking-`
 Text domain: `skvn-shipment-tracking`
 Upload folder: `wp-content/uploads/shipments/`
+CPT: `skvn_shipment` (`public: false`, `rewrite: false`)
 
 Không đụng vào:
 - `themes/generatepress/` — tuyệt đối không
 - `skvn-marine` theme — không sửa, chỉ follow visual contract
 - WooCommerce data
 - External plugins (CF7, Rank Math, Polylang, Thumbpress internals)
+- Trang `/contact/` và Quote Flow
 
 WebP conversion là của Thumbpress — plugin không tự xử lý.
 
@@ -93,6 +105,8 @@ Thumbpress xử lý WebP — plugin chỉ hook vào pipeline, không tự conver
 blurred-thumb.webp: CHỈ 1 file per batch — không blur toàn bộ ảnh.
 Share button: server-side render PHP — không CSS hide, không JS toggle.
 Original files không được có public URL trừ khi request có valid token.
+Public tracking surfaces không được expose client name.
+`/tracking/` là surface duy nhất INDEX; các URL tracking còn lại NOINDEX.
 ```
 
 ---

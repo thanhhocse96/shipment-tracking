@@ -2,7 +2,9 @@
 set -euo pipefail
 
 WP_ROOT="/mnt/d/Github/minhhaifish"
-REPO_ROOT="/mnt/d/Github/skvn-marine"
+THEME_REPO_ROOT="/mnt/d/Github/skvn-marine"
+TRACKING_REPO_ROOT="/mnt/d/Github/shipment-tracking"
+TRACKING_PLUGIN_ROOT="$WP_ROOT/wp-content/plugins/skvn-shipment-tracking"
 SECRET_FILE="/root/.skvn-local/minhhaifish.env"
 
 mkdir -p /root/.skvn-local
@@ -84,11 +86,31 @@ wp plugin install \
 
 wp theme install generatepress --activate --path="$WP_ROOT" --allow-root
 
-rsync -a --delete "$REPO_ROOT/wp-content/themes/skvn-marine/" "$WP_ROOT/wp-content/themes/skvn-marine/"
-rsync -a --delete "$REPO_ROOT/wp-content/plugins/skvn-marine-blocks/" "$WP_ROOT/wp-content/plugins/skvn-marine-blocks/"
+rsync -a --delete "$THEME_REPO_ROOT/wp-content/themes/skvn-marine/" "$WP_ROOT/wp-content/themes/skvn-marine/"
+rsync -a --delete "$THEME_REPO_ROOT/wp-content/plugins/skvn-marine-blocks/" "$WP_ROOT/wp-content/plugins/skvn-marine-blocks/"
+
+mkdir -p "$TRACKING_PLUGIN_ROOT"
+rsync -a --delete \
+	--exclude '.agents/' \
+	--exclude '.context/' \
+	--exclude '.git/' \
+	--exclude '.local/' \
+	--exclude 'build/' \
+	--exclude 'docs/' \
+	--exclude 'node_modules/' \
+	--exclude 'tools/' \
+	"$TRACKING_REPO_ROOT/" \
+	"$TRACKING_PLUGIN_ROOT/"
 
 wp plugin activate skvn-marine-blocks --path="$WP_ROOT" --allow-root
+if [ -f "$TRACKING_PLUGIN_ROOT/skvn-shipment-tracking.php" ]; then
+	wp plugin activate skvn-shipment-tracking --path="$WP_ROOT" --allow-root
+fi
 wp theme activate skvn-marine --path="$WP_ROOT" --allow-root
+
+if ! wp plugin list --path="$WP_ROOT" --allow-root --field=name | grep -qi 'thumbpress'; then
+	echo "WARNING: Thumbpress is required but was not detected. Install/activate it before image-pipeline testing." >&2
+fi
 
 wp rewrite structure '/%postname%/' --path="$WP_ROOT" --allow-root --quiet
 wp rewrite flush --path="$WP_ROOT" --allow-root --quiet
