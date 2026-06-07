@@ -80,6 +80,7 @@ CSS prefix: `skvn-tracking-`
 Text domain: `skvn-shipment-tracking`
 Upload folder: `wp-content/uploads/shipments/`
 CPT: `skvn_shipment` (`public: false`, `rewrite: false`)
+Frontend: Vanilla TypeScript, không React / UI framework runtime
 
 Không đụng vào:
 - `themes/generatepress/` — tuyệt đối không
@@ -107,6 +108,10 @@ Share button: server-side render PHP — không CSS hide, không JS toggle.
 Original files không được có public URL trừ khi request có valid token.
 Public tracking surfaces không được expose client name.
 `/tracking/` là surface duy nhất INDEX; các URL tracking còn lại NOINDEX.
+Frontend interaction dùng Vanilla TypeScript; không thêm React.
+Public render/API chỉ đọc `_skvn_public_snapshot`, không redact private meta lúc request.
+Token không expiry trong MVP; staff rotate token để revoke link cũ.
+Uninstall mặc định giữ operational data và shipment files.
 ```
 
 ---

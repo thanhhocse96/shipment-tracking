@@ -14,7 +14,19 @@ Text domain:    skvn-shipment-tracking
 Upload folder:  wp-content/uploads/shipments/
 CPT:            skvn_shipment
 PHP version:    8.0 (shared hosting constraint)
+Frontend:       Vanilla TypeScript
 ```
+
+## Frontend Architecture
+
+- Không dùng React, JSX hoặc UI framework runtime.
+- TypeScript compile/bundle thành JavaScript để WordPress enqueue.
+- PHP render initial markup và mọi element liên quan authorization.
+- TypeScript chỉ quản lý interaction: tab switch, upload UX, load more,
+  clipboard, gallery/lightbox navigation và mobile gestures.
+- Không đưa token/private image URL vào public DOM hoặc JS payload.
+- Tailwind MVP dùng WindPress đã có trong site; không thêm dependency.
+- Khi tách CSS build riêng, disable/scope preflight để không ảnh hưởng WP admin/theme.
 
 ## CPT Contract
 
@@ -39,8 +51,23 @@ single/archive template của CPT.
 | `_skvn_product_type` | Loại sản phẩm | Full |
 | `_skvn_token` | Token access 32-char hex | Không |
 | `_skvn_thumb_blurred` | Internal blurred thumb path | Không |
+| `_skvn_batch_status` | draft / published / archived | Không |
+| `_skvn_last_viewed` | Last valid-token view | Không |
+| `_skvn_view_count` | Valid-token view count | Không |
+| `_skvn_public_snapshot` | Stored redacted public projection | Public source duy nhất |
 
 Attachment thuộc batch phải có `_skvn_shipment_id`.
+
+## Public Data Boundary
+
+Public grid, public view và public REST API chỉ được đọc
+`_skvn_public_snapshot`. Không load `_skvn_client_name`,
+`_skvn_container_number`, `_skvn_token` hoặc private attachment URLs trong
+public request rồi redact sau.
+
+Snapshot regenerate khi batch title, product type, closing date, blurred thumb
+hoặc public labels thay đổi. Nếu snapshot thiếu/invalid, fail closed: skip hoặc
+safe empty state; không fallback sang private meta.
 
 ## PHP Security — Bắt buộc mỗi khi xử lý input/output
 
@@ -99,11 +126,15 @@ if (is_user_logged_in() && current_user_can('manage_skvn_tracking')) {
 ## Access Control
 
 Token: 32-char random hex. Generate khi tạo batch.
+Token không expiry trong MVP; staff có thể rotate để revoke link cũ.
 Original files không có public URL trừ khi valid token trong request.
 Staff portal login: inline form, KHÔNG redirect `/wp-login.php`.
 
 Valid token → client view full resolution, client name visible, NOINDEX.
 Invalid token → redirect sang public view, không trả partial private data.
+
+Uninstall mặc định giữ data và shipment files. Purge chỉ qua explicit admin
+action có capability, nonce và confirmation.
 
 ## Không Đụng Vào
 

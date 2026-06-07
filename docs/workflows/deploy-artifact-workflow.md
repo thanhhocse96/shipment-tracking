@@ -34,6 +34,10 @@ assets/
 languages/
 ```
 
+Compiled Vanilla TypeScript JavaScript belongs under `assets/` and is included.
+TypeScript source, source maps, dependencies, and build caches are
+development-only unless a release contract explicitly says otherwise.
+
 Exclude development-only material:
 
 ```text
@@ -46,6 +50,8 @@ tools/
 node_modules/
 tests/
 build/
+src/
+*.map
 ```
 
 If a new PHP `require` or `include` path is added, update the artifact builder

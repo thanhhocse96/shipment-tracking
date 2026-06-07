@@ -12,17 +12,19 @@ Upload → Thumbpress (WebP + optimize) → Plugin hook → Set ALT → Gán cat
 
 Plugin hook VÀO Thumbpress — không tự xử lý WebP.
 
-## Thumbpress Hook — UNRESOLVED
+## Thumbpress Hook
 
-Hook name chưa verified. Xem `TENSIONS_OPEN.md`.
+Source review chốt `add_attachment` priority 5 cho convert-on-upload:
 
-Candidates cần inspect:
-- `thumbpress_after_convert`
-- `add_attachment` (WP native — cần verify timing vs Thumbpress)
+```php
+add_action( 'add_attachment', 'skvn_tracking_process_uploaded_attachment', 5 );
+```
 
-Cách verify: dùng `add_action('all', function($tag) { error_log($tag); })` khi upload test image để capture hook sequence.
+Guard MIME `image/webp` và path `/shipments/`. Fallback cho manual/bulk
+conversion: `thumbpress_file_meta_refreshed`.
 
-Không implement ALT text pipeline (milestone 0.2.0) trước khi resolve tension này.
+Vẫn bắt buộc upload acceptance test trên runtime có ThumbPress trước khi ship
+milestone 0.1.0.
 
 ## ALT Text — Fallback System
 
@@ -61,6 +63,7 @@ CHỈ 1 blurred-thumb.webp per batch.
 Source: ảnh đầu tiên của "Seal & Door Check"
         (fallback: ảnh đầu tiên bất kỳ nếu không có Seal & Door)
 Output: wp-content/uploads/shipments/[batch-slug]/blurred-thumb.webp
+Display: blur(8px) + scale(1.05)
 ```
 
 ## Folder Structure
@@ -96,8 +99,8 @@ Priority: manual override (staff kéo vào zone) > auto-detect.
 
 "Số thuần" → prefix "row-" tự động. "28 (3)" → label "Row 28 - 3".
 
-## Deferred Decisions
+## Confirmed UI Decisions
 
-- Blur level cho `blurred-thumb.webp`
-- Mobile image/gallery behavior chưa có wireframe
-- Lightbox navigation cross-category hay current category
+- Mobile upload defer khỏi MVP; native picker, no preview, counter/error required.
+- Lightbox navigation cross-category trong toàn batch.
+- Blurred display level: `blur(8px)` + `scale(1.05)`.

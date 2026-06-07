@@ -26,6 +26,16 @@ plugin owns only styles and interactions required by its four surfaces.
 The plugin follows theme tokens where available and scopes its selectors with
 `skvn-tracking-`. It must not modify the theme to force visual parity.
 
+## Frontend Technology
+
+- Interactive UI uses Vanilla TypeScript and browser DOM APIs.
+- React and UI framework runtimes are not part of the plugin.
+- PHP renders initial semantic markup and authorization-sensitive controls.
+- TypeScript progressively enhances markup; essential content/navigation must
+  not become inaccessible solely because JavaScript fails.
+- Tailwind MVP uses the site's existing WindPress integration.
+- A future standalone plugin CSS build must disable or tightly scope preflight.
+
 ## Surface Rules
 
 ### Staff Upload
@@ -73,3 +83,5 @@ The plugin follows theme tokens where available and scopes its selectors with
 - No CSS hiding for security or authorization.
 - No public original-image URL in markup, CSS, preload, or API payload.
 - No mobile behavior invented without recording the unresolved decision.
+- No React/JSX dependency or client-side authorization logic.
+- Public UI and REST payloads may only consume `_skvn_public_snapshot`.

@@ -38,8 +38,8 @@ Ngày đóng hàng
 Loại sản phẩm
 ```
 
-Desktop portal có sticky zone navigation. Mobile layout chưa có wireframe,
-không tự quyết định contract mới.
+Desktop portal có sticky zone navigation. Mobile upload defer khỏi MVP; milestone
+sau dùng native file picker, không thumbnail preview, bắt buộc counter/error list.
 
 Upload flow (tóm tắt):
 1. Staff điền form metadata
@@ -60,13 +60,15 @@ Login check: `is_user_logged_in()`. Không login → form login inline, KHÔNG r
 ```
 INDEX: YES (SEO surface chính)
 Layout: 4 col desktop / 3 col 1024px / 2 col tablet
-Load: infinite scroll
-Card: blurred thumbnail + batch title + product type + năm
-Client name: KHÔNG hiển thị
+Load: nút "Load more", không auto infinite scroll
+Sort: chronological, newest first
+Card: chỉ dùng `_skvn_public_snapshot`
+Client/container: literal "Redacted"
 Bấm card: redirect /contact/ — không mở batch
 ```
 
-Grid grouping còn OPEN: chronological hay group theo product type.
+Public REST endpoint cũng chỉ serialize `_skvn_public_snapshot`; không query
+private meta để redact trong request.
 
 ---
 
@@ -92,20 +94,21 @@ Invalid token: redirect sang public view
 Sidebar: 4 category tabs
 Gallery: ảnh theo category được chọn
 Share button: server-side render, chỉ staff thấy
-Lightbox: thumbnail strip + keyboard nav + mobile swipe
+Lightbox: cross-category prev/next, keyboard arrows + ESC, zoom +/-, lazy load
 ```
-
-Lightbox cross-category hay chỉ current category còn OPEN.
 
 ---
 
 ## Redact Logic
 
 ```
-Client name:      "Yamamoto Trading Co."  →  "*** *** ***"
+Client name:      "Yamamoto Trading Co."  →  "Redacted"
 Container number: "CSNU1234567"           →  "Redacted"
 Closing date:     "2024-01-15"            →  "2024"
 ```
+
+Redacted values được generate/store trong `_skvn_public_snapshot`, không tạo
+động từ private meta trong public request.
 
 ---
 

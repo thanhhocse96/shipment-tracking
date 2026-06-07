@@ -9,6 +9,7 @@
 - Text domain: `skvn-shipment-tracking`
 - Upload root: `wp-content/uploads/shipments/`
 - PHP compatibility: 8.0
+- Frontend: Vanilla TypeScript, no React
 
 ## Source Priority
 
@@ -36,6 +37,13 @@ project. They cannot change plugin identity, prefix, ownership, or scope.
 - Do not overwrite manually entered image captions/ALT text.
 - Do not implement a later milestone without human promotion.
 - Do not archive or resolve tension entries without human approval.
+- Do not add React, JSX, React DOM, or a UI framework runtime.
+- Keep authorization and private-data decisions in PHP, never TypeScript.
+- Tailwind MVP uses existing WindPress; do not add another Tailwind dependency.
+- Public templates and REST endpoints may only read `_skvn_public_snapshot`.
+- Never fetch private meta in a public request with the intent to redact later.
+- Token links do not expire in MVP but must support staff-triggered rotation.
+- Uninstall keeps operational data by default.
 
 ## Task Scope
 

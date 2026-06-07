@@ -22,6 +22,7 @@ GeneratePress       → parent theme (KHÔNG được đụng vào)
 skvn-marine         → child theme (visual system)
 Thumbpress          → WebP conversion và image optimization
                       Plugin tracking hook VÀO Thumbpress, không tự xử lý WebP
+Frontend behavior   → Vanilla TypeScript, không React / UI framework runtime
 ```
 
 Plugin slug:        `skvn-shipment-tracking`
@@ -29,6 +30,19 @@ PHP prefix:         `skvn_tracking_`
 CSS prefix:         `skvn-tracking-`
 Text domain:        `skvn-shipment-tracking`
 Upload folder:      `wp-content/uploads/shipments/`
+
+### Frontend implementation decision
+
+```
+Language:       Vanilla TypeScript
+React:          KHÔNG dùng
+Runtime:        Browser DOM APIs + WordPress APIs
+Build output:   JavaScript compile/bundle để WordPress enqueue
+```
+
+Tailwind chưa phải dependency bắt buộc. Nếu được approve riêng, chỉ dùng ở
+build-time và phải scope/preflight-safe để không ảnh hưởng WordPress admin hoặc
+`skvn-marine`.
 
 ---
 
@@ -510,3 +524,5 @@ Reference: frame.io (UX pattern gần nhất — dark, share link, client view, 
 Secondary: flexport.com (B2B logistics, trustworthy)
 
 Chưa có Tailwind/HTML artifact từ MetaAI. Brief đã chuẩn bị sẵn để paste.
+
+Frontend implementation đã chốt: Vanilla TypeScript, không React.

@@ -13,6 +13,7 @@ GeneratePress       parent theme — KHÔNG đụng vào
 skvn-marine         child theme — không sửa, chỉ follow visual contract
 Thumbpress          image optimization — plugin chỉ hook vào
 PHP                 8.0 (shared hosting constraint)
+Frontend            Vanilla TypeScript (no React runtime)
 ```
 
 External site plugins như CF7, CFDB7, Rank Math và Polylang không thuộc
@@ -56,6 +57,9 @@ wp post meta get <attachment_id> _skvn_shipment_id
 PHP 8.0 — tránh syntax mới hơn 8.0 (no readonly properties without constructor promotion từ 8.1+, no enums từ 8.1+).
 
 Shared hosting: không có root access. WP-CLI có thể không available — kiểm tra với human trước khi assume.
+
+Frontend build chạy local trước khi package. Production/shared hosting không
+cần Node.js. Không thêm React dependency.
 
 ## Runtime Boundaries
 
