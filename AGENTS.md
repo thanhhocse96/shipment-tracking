@@ -154,3 +154,18 @@ Trước khi kết thúc, tự hỏi:
 - Có tension nào mới phát hiện không?
 - Có constraint cũ nào hết hiệu lực không?
 - Verification gate pass chưa?
+
+---
+
+## 10. Decision Record Naming
+
+Các decision record trong `docs/decisions/` dùng tiền tố hai chữ số tăng tuần
+tự theo thứ tự tạo:
+
+```text
+00-media-library-tabs.md
+01-<decision-name>.md
+02-<decision-name>.md
+```
+
+Trước khi tạo decision mới, kiểm tra số lớn nhất hiện có và tăng thêm `1`.
