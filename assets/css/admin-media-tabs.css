@@ -1,0 +1,35 @@
+.skvn-tracking-media-tabs {
+	display: flex;
+	gap: 8px;
+	margin: 16px 0;
+}
+
+.skvn-tracking-media-tabs__button {
+	min-height: 36px;
+	padding: 6px 14px;
+	border: 1px solid #8c8f94;
+	border-radius: 3px;
+	background: #f6f7f7;
+	color: #1d2327;
+	cursor: pointer;
+	font: inherit;
+	font-weight: 600;
+}
+
+.skvn-tracking-media-tabs__button:hover {
+	border-color: #2271b1;
+	color: #0a4b78;
+}
+
+.skvn-tracking-media-tabs__button:focus-visible {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+	outline: 2px solid transparent;
+}
+
+.skvn-tracking-media-tabs__button.is-active {
+	border-color: #2271b1;
+	background: #2271b1;
+	color: #fff;
+}
+

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "none",
+    "lib": [
+      "DOM",
+      "ES2018"
+    ],
+    "rootDir": "src",
+    "outDir": "assets/js",
+    "strict": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": false
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}
+

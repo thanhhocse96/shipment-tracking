@@ -19,6 +19,12 @@ Filter dùng `ajax_query_attachments_args`. Meta key phân biệt: `_skvn_shipme
 Tab **Post - Pages** → attachments KHÔNG CÓ `_skvn_shipment_id`.
 Tab **Shipment Tracking** → attachments CÓ `_skvn_shipment_id`.
 
+Grid view dùng `library.props.set()` để trigger WordPress
+`query-attachments` AJAX và re-render không reload. List view là
+server-rendered fallback: tab đổi URL và reload, query được scope bằng
+`pre_get_posts`. Không build custom AJAX replacement cho `WP_Media_List_Table`
+trong milestone 0.1.0.
+
 Rủi ro: WP update thay đổi Media Library UI markup → JS selector cần update. Ghi chú selector đang dùng trong comment code.
 
 ---

@@ -5,13 +5,30 @@
 Package only the `skvn-shipment-tracking` plugin for installation in WordPress.
 The theme and external dependencies are installed separately.
 
+## Local Shell
+
+The project build environment is WSL Debian. Run Node, npm, PHP, and packaging
+commands inside WSL rather than relying on Windows-installed toolchains.
+
+From PowerShell:
+
+```powershell
+wsl -d Debian -- bash -lc ". /home/shinkuro/.nvm/nvm.sh && nvm use 20 >/dev/null && cd /mnt/d/Github/shipment-tracking && npm ci && npm run package"
+```
+
+The `nvm` initialization is required because Node is not installed globally in
+the Debian distribution.
+
 ## Build
 
 From the repository root:
 
 ```bash
-node tools/build-deploy-artifact.mjs
-bash tools/package-plugin-zip.sh
+. /home/shinkuro/.nvm/nvm.sh
+nvm use 20
+npm ci
+npm run build
+npm run package:artifact
 ```
 
 Output:
@@ -37,6 +54,10 @@ languages/
 Compiled Vanilla TypeScript JavaScript belongs under `assets/` and is included.
 TypeScript source, source maps, dependencies, and build caches are
 development-only unless a release contract explicitly says otherwise.
+
+`npm run package` performs the TypeScript build, creates the plugin-only
+artifact directory, and then creates the zip. Shared hosting does not need
+Node.js or TypeScript.
 
 Exclude development-only material:
 
@@ -91,3 +112,5 @@ Confirm:
 - No `.local/ENVIRONMENT.md` or credentials are bundled.
 - No theme or external plugin source is bundled.
 - Plugin bootstrap and every runtime include are present.
+- `assets/js/admin-media-tabs.js` is present.
+- `src/`, `node_modules/`, `package.json`, and source maps are absent.

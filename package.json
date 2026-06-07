@@ -1,0 +1,15 @@
+{
+  "name": "skvn-shipment-tracking",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "package:artifact": "node tools/build-deploy-artifact.mjs && bash tools/package-plugin-zip.sh",
+    "package": "npm run build && npm run package:artifact"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
+

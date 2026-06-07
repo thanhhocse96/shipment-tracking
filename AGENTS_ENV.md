@@ -61,6 +61,10 @@ Shared hosting: không có root access. WP-CLI có thể không available — ki
 Frontend build chạy local trước khi package. Production/shared hosting không
 cần Node.js. Không thêm React dependency.
 
+Build local chạy trong WSL Debian. Node được quản lý bằng nvm, vì vậy shell phải
+source `/home/shinkuro/.nvm/nvm.sh` và chạy `nvm use 20` trước npm commands.
+Workflow chuẩn nằm tại `docs/workflows/deploy-artifact-workflow.md`.
+
 ## Runtime Boundaries
 
 Plugin không chạy code nào ngoài WordPress request lifecycle.
