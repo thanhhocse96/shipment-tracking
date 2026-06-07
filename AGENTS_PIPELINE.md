@@ -90,6 +90,10 @@ Output: wp-content/uploads/shipments/[batch-slug]/blurred-thumb.webp
 Display: blur(8px) + scale(1.05)
 ```
 
+`blurred-thumb.webp` phải được blur thật server-side; CSS blur chỉ là visual
+enhancement, không phải privacy boundary. Source attachment ID lưu nội bộ để
+fallback thumbnail được replace nếu ảnh Seal & Door xuất hiện sau.
+
 ## Folder Structure
 
 ```

@@ -346,4 +346,6 @@ function skvn_tracking_process_uploaded_attachment( $attachment_id ) {
 	}
 
 	update_post_meta( $attachment_id, '_wp_attachment_image_alt', sanitize_text_field( $caption ) );
+
+	do_action( 'skvn_tracking_attachment_processed', $attachment_id, (int) $batch->ID, $category );
 }

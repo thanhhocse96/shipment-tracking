@@ -138,6 +138,11 @@ Staff portal login: inline form, KHÔNG redirect `/wp-login.php`.
 Valid token → client view full resolution, client name visible, NOINDEX.
 Invalid token → redirect sang public view, không trả partial private data.
 
+Original attachment URL không được render trực tiếp. Sau authorization, dùng
+`skvn_tracking_get_protected_file_url()`; endpoint revalidate token và stream
+file với `private, no-store`. `skvn_tracking_record_client_view()` chỉ gọi một
+lần từ page controller, không gọi theo từng image request.
+
 Uninstall mặc định giữ data và shipment files. Purge chỉ qua explicit admin
 action có capability, nonce và confirmation.
 

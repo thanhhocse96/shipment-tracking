@@ -244,6 +244,19 @@ function skvn_tracking_register_post_meta() {
 
 	register_post_meta(
 		'skvn_shipment',
+		'_skvn_thumb_source_id',
+		array(
+			'type'              => 'integer',
+			'single'            => true,
+			'default'           => 0,
+			'show_in_rest'      => false,
+			'sanitize_callback' => 'absint',
+			'auth_callback'     => 'skvn_tracking_meta_auth_callback',
+		)
+	);
+
+	register_post_meta(
+		'skvn_shipment',
 		'_skvn_public_snapshot',
 		array(
 			'type'              => 'object',
@@ -255,4 +268,3 @@ function skvn_tracking_register_post_meta() {
 		)
 	);
 }
-

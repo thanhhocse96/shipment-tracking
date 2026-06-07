@@ -11,7 +11,7 @@ Implemented; ThumbPress timing tension vẫn OPEN chờ onsite verification.
 
 ---
 
-## 0.2.0 — CPT + Upload Pipeline Core ← CURRENT
+## 0.2.0 — CPT + Upload Pipeline Core
 
 - Register `skvn_shipment` CPT
 - Meta fields: batch title, client name, container number, closing date, product type, token, thumb path
@@ -22,7 +22,7 @@ Implemented; ThumbPress timing tension vẫn OPEN chờ onsite verification.
 
 ---
 
-## 0.3.0 — Blurred Thumbnail + Token
+## 0.3.0 — Blurred Thumbnail + Token ← CURRENT
 
 - Generate `blurred-thumb.webp` (1 per batch)
 - 32-char hex token generation

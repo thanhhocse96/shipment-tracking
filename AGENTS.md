@@ -30,7 +30,7 @@ ownership boundary của plugin này.
 ## 2. Current Milestone
 
 ```
-0.2.0 — CPT + Upload Pipeline Core
+0.3.0 — Blurred Thumbnail + Token
 ```
 
 Source of truth: `.context/MILESTONES.md`
