@@ -22,11 +22,17 @@ Thumbpress          WebP conversion và image optimization
                     Plugin hook vào Thumbpress, không tự xử lý WebP
 
 [manual] Module Index
-includes/class-media-tabs.php     Media Library tab injection + ajax filter
-includes/class-image-pipeline.php Upload hook, ALT text, category assignment (0.2.0+)
-includes/class-access-control.php Token validation, share button render (0.3.0+)
-includes/class-routing.php        Custom routing cho /tracking/* URLs (0.4.0+)
-assets/js/admin-media-tabs.js     Tab switch UI — chỉ enqueue trên upload.php
+includes/class-post-type.php         CPT, private meta, sanitizers, capability map
+includes/class-plugin-lifecycle.php  Activation, upgrade setup, capability, upload base
+includes/class-media-tabs.php        Media Library Grid/List filters
+includes/class-image-pipeline.php    Upload context, shipment path, ALT/category/meta
+includes/class-access-control.php    Token lifecycle, validation, protected file stream
+includes/class-blurred-thumbnail.php One server-blurred public thumbnail per batch
+includes/class-routing.php           Planned custom routing for /tracking/* (0.4.0+)
+assets/js/admin-media-tabs.js        Tab switch UI — chỉ enqueue trên upload.php
+
+Chi tiết ownership/hook/call flow:
+docs/architecture/00-includes-module-map.md
 
 [manual] Surfaces
 /tracking/upload/              Staff portal — NOINDEX
@@ -35,7 +41,7 @@ assets/js/admin-media-tabs.js     Tab switch UI — chỉ enqueue trên upload.p
 /tracking/[slug]/?token=xxx    Client view — NOINDEX
 
 [manual] Current Phase
-Milestone 0.1.0 — Media Library Tab + Thumbpress Hook
+Milestone 0.3.0 — Blurred Thumbnail + Token
 Xem .context/MILESTONES.md cho acceptance criteria chi tiết.
 
 [manual] Key Invariants

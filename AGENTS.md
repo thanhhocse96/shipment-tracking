@@ -169,3 +169,12 @@ tự theo thứ tự tạo:
 ```
 
 Trước khi tạo decision mới, kiểm tra số lớn nhất hiện có và tăng thêm `1`.
+
+Architecture records trong `docs/architecture/` dùng cùng quy tắc tiền tố hai
+chữ số:
+
+```text
+00-includes-module-map.md
+01-<architecture-name>.md
+02-<architecture-name>.md
+```
