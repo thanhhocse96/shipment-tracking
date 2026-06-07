@@ -57,6 +57,11 @@ single/archive template của CPT.
 | `_skvn_public_snapshot` | Stored redacted public projection | Public source duy nhất |
 
 Attachment thuộc batch phải có `_skvn_shipment_id`.
+Attachment category lưu trong `_skvn_shipment_category` với enum
+`seal | temperature | cargo | uncategorized`.
+
+Administrator được cấp capability `manage_skvn_tracking` khi activation hoặc
+non-destructive version upgrade.
 
 ## Public Data Boundary
 

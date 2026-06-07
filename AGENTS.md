@@ -30,7 +30,7 @@ ownership boundary của plugin này.
 ## 2. Current Milestone
 
 ```
-0.1.0 — Media Library Tab + Thumbpress Hook
+0.2.0 — CPT + Upload Pipeline Core
 ```
 
 Source of truth: `.context/MILESTONES.md`

@@ -5,13 +5,13 @@
 
 ---
 
-## 0.1.0 — Media Library Tab + Thumbpress Hook ← CURRENT
+## 0.1.0 — Media Library Tab + Thumbpress Hook
 
-Xem `.context/MILESTONES.md`.
+Implemented; ThumbPress timing tension vẫn OPEN chờ onsite verification.
 
 ---
 
-## 0.2.0 — CPT + Upload Pipeline Core
+## 0.2.0 — CPT + Upload Pipeline Core ← CURRENT
 
 - Register `skvn_shipment` CPT
 - Meta fields: batch title, client name, container number, closing date, product type, token, thumb path

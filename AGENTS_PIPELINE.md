@@ -12,6 +12,30 @@ Upload → Thumbpress (WebP + optimize) → Plugin hook → Set ALT → Gán cat
 
 Plugin hook VÀO Thumbpress — không tự xử lý WebP.
 
+## Upload Context
+
+Upload code phải set request-scoped context trước khi gọi WordPress media API và
+clear bằng `finally`:
+
+```php
+skvn_tracking_set_upload_context( $batch_id, $category, $caption );
+
+try {
+    // media_handle_upload() hoặc wp_handle_sideload() flow.
+} finally {
+    skvn_tracking_clear_upload_context();
+}
+```
+
+Context route file vào `shipments/[batch-slug]/original/`. Attachment lưu:
+
+```text
+_skvn_shipment_id
+_skvn_shipment_category
+```
+
+Allowed category enum: `seal`, `temperature`, `cargo`, `uncategorized`.
+
 ## Thumbpress Hook
 
 Source review chốt `add_attachment` priority 5 cho convert-on-upload:
