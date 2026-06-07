@@ -41,7 +41,7 @@ docs/architecture/00-includes-module-map.md
 /tracking/[slug]/?token=xxx    Client view — NOINDEX
 
 [manual] Current Phase
-Milestone 0.3.0 — Blurred Thumbnail + Token
+Milestone 0.4.0 — Routing + Upload Portal Foundation
 Xem .context/MILESTONES.md cho acceptance criteria chi tiết.
 
 [manual] Key Invariants

@@ -30,7 +30,7 @@ ownership boundary của plugin này.
 ## 2. Current Milestone
 
 ```
-0.3.0 — Blurred Thumbnail + Token
+0.4.0 — Routing + Upload Portal Foundation
 ```
 
 Source of truth: `.context/MILESTONES.md`

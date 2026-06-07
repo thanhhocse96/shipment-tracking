@@ -18,16 +18,15 @@ skvn-shipment-tracking.php
 ├── class-image-pipeline.php
 │   └── do_action: skvn_tracking_attachment_processed
 ├── class-access-control.php
-└── class-blurred-thumbnail.php
-    └── listens: skvn_tracking_attachment_processed
+├── class-blurred-thumbnail.php
+│   └── listens: skvn_tracking_attachment_processed
+├── class-routing.php
+└── class-upload-portal.php
 ```
 
-Planned, chưa tồn tại:
-
-```text
-class-routing.php       0.4.0+
-class-upload-portal.php 0.4.0+
-```
+`class-routing.php` owns `/tracking/upload/` and `/tracking/[slug]/` rewrite
+dispatch. `class-upload-portal.php` owns the private/no-store staff shell,
+inline login form and authorized frontend configuration.
 
 ## class-post-type.php
 
@@ -285,4 +284,3 @@ flowchart TD
 5. Document ownership and boundary in this file.
 6. Confirm the deploy artifact contains the new include.
 7. Run PHP lint, prefix scan, context consistency and package audit.
-
